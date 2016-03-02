@@ -8,5 +8,6 @@ namespace PuzzleGame.ViewModels
 {
     class MainWindowViewModel
     {
+        //Это главное окно
     }
 }
