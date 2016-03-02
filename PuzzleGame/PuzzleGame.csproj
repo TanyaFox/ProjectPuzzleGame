@@ -64,6 +64,9 @@
     <Compile Include="Views\AboutAuthorsWindowView.xaml.cs">
       <DependentUpon>AboutAuthorsWindowView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GameWindowView.xaml.cs">
+      <DependentUpon>GameWindowView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AboutAuthorsWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
