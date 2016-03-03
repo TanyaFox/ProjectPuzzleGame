@@ -59,12 +59,16 @@
     </Compile>
     <Compile Include="Models\Settings.cs" />
     <Compile Include="ViewModels\AboutAuthorsWindowViewModel.cs" />
+    <Compile Include="ViewModels\GameHardWindowViewModel.cs" />
     <Compile Include="ViewModels\GameMiddleWindowViewModel.cs" />
     <Compile Include="ViewModels\GameWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NewGameWindowViewModel.cs" />
     <Compile Include="Views\AboutAuthorsWindowView.xaml.cs">
       <DependentUpon>AboutAuthorsWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameHardWindowView.xaml.cs">
+      <DependentUpon>GameHardWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameMiddleWindowView.xaml.cs">
       <DependentUpon>GameMiddleWindowView.xaml</DependentUpon>
@@ -111,6 +115,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AboutAuthorsWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameHardWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
