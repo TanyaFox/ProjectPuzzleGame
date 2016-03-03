@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="Models\Settings.cs" />
     <Compile Include="ViewModels\AboutAuthorsWindowViewModel.cs" />
+    <Compile Include="ViewModels\GameWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NewGameWindowViewModel.cs" />
     <Compile Include="Views\AboutAuthorsWindowView.xaml.cs">
