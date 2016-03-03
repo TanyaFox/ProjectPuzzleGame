@@ -1,0 +1,49 @@
+﻿<Window x:Class="PuzzleGame.Views.GameMiddleWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Собери паззл! Уровень: средне" Height="310" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.ColumnSpan="5" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Margin="10">Уровень: средне</TextBlock>
+        <Image Grid.Column="0" Grid.Row="1" Height="40" Width="80" Margin="10 0 0 0" ></Image>
+        <Image Grid.Column="1" Grid.Row="1" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="2" Grid.Row="1" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="3" Grid.Row="1" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="4" Grid.Row="1" Height="40" Width="80" Margin="0 0 10 0"></Image>
+        <Image Grid.Column="0" Grid.Row="2" Height="40" Width="80" Margin="10 0 0 0" ></Image>
+        <Image Grid.Column="1" Grid.Row="2" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="2" Grid.Row="2" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="3" Grid.Row="2" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="4" Grid.Row="2" Height="40" Width="80" Margin="0 0 10 0"></Image>
+        <Image Grid.Column="0" Grid.Row="3" Height="40" Width="80" Margin="10 0 0 0" ></Image>
+        <Image Grid.Column="1" Grid.Row="3" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="2" Grid.Row="3" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="3" Grid.Row="3" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="4" Grid.Row="3" Height="40" Width="80" Margin="0 0 10 0"></Image>
+        <Image Grid.Column="0" Grid.Row="4" Height="40" Width="80" Margin="10 0 0 0" ></Image>
+        <Image Grid.Column="1" Grid.Row="4" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="2" Grid.Row="4" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="3" Grid.Row="4" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="4" Grid.Row="4" Height="40" Width="80" Margin="0 0 10 0"></Image>
+        <Image Grid.Column="0" Grid.Row="5" Height="40" Width="80" Margin="10 0 0 0" ></Image>
+        <Image Grid.Column="1" Grid.Row="5" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="2" Grid.Row="5" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="3" Grid.Row="5" Height="40" Width="80" Margin="0"></Image>
+        <Image Grid.Column="4" Grid.Row="5" Height="40" Width="80" Margin="0 0 10 0"></Image>
+        <Button Grid.Row="5" Grid.ColumnSpan="5" Height="40" Width="100" Margin="15">Сохранить игру</Button>
+    </Grid>
+</Window>
