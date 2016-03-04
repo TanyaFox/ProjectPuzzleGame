@@ -59,6 +59,9 @@
     </Compile>
     <Compile Include="Models\Settings.cs" />
     <Compile Include="ViewModels\AboutAuthorsWindowViewModel.cs" />
+    <Compile Include="ViewModels\GameDragDropModeHardWindowViewModel.cs" />
+    <Compile Include="ViewModels\GameDragDropModeMiddleWindowViewModel.cs" />
+    <Compile Include="ViewModels\GameDragDropModeWindowViewModel.cs" />
     <Compile Include="ViewModels\GameHardWindowViewModel.cs" />
     <Compile Include="ViewModels\GameMiddleWindowViewModel.cs" />
     <Compile Include="ViewModels\GameWindowViewModel.cs" />
@@ -66,6 +69,15 @@
     <Compile Include="ViewModels\NewGameWindowViewModel.cs" />
     <Compile Include="Views\AboutAuthorsWindowView.xaml.cs">
       <DependentUpon>AboutAuthorsWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameDragDropModeHardWindowView.xaml.cs">
+      <DependentUpon>GameDragDropModeHardWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameDragDropModeMiddleWindowView.xaml.cs">
+      <DependentUpon>GameDragDropModeMiddleWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameDragDropModeWindowView.xaml.cs">
+      <DependentUpon>GameDragDropModeWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameHardWindowView.xaml.cs">
       <DependentUpon>GameHardWindowView.xaml</DependentUpon>
@@ -115,6 +127,18 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AboutAuthorsWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameDragDropModeHardWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameDragDropModeMiddleWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameDragDropModeWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
