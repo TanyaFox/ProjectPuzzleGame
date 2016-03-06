@@ -58,6 +58,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Cell.cs" />
+    <Compile Include="Models\Field.cs" />
     <Compile Include="ViewModels\AboutAuthorsWindowViewModel.cs" />
     <Compile Include="ViewModels\GameDragDropModeHardWindowViewModel.cs" />
     <Compile Include="ViewModels\GameDragDropModeMiddleWindowViewModel.cs" />
