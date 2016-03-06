@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PuzzleGame.Models
 {
-    class Field
+    class Field1
     {
         public List<Cell> ListCell { get; set; }
 
-        public Field(int cells)
+        public Field1(int cells)
         {
             List<Cell> Templist = new List<Cell>();
             for (int i = 1; i <= cells; i++)
@@ -20,13 +20,20 @@ namespace PuzzleGame.Models
             this.ListCell = Templist;
         }
 
-        public Field(List<int> rnd)
+        public Field1(List<int> rnd)
         {
             List<Cell> Templist = new List<Cell>();
             for (int i = 1; i <= rnd.Count; i++)
             {
                 Templist.Add(new Cell(rnd[i], i));
             }
+        }
+
+        public void CellChange(int first, int second)//Для «пятнашек»
+        {
+            Cell temp = new Cell(second, first);
+            ListCell[second] = new Cell(ListCell[first].CurrentElement, second);
+            ListCell[first] = temp;
         }
     }
 }
