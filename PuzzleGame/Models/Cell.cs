@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PuzzleGame.Models
 {
-    class Settings
+    class Cell
     {
+
     }
 }
