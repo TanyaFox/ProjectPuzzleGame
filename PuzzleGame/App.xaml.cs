@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using PuzzleGame.Views;
+using PuzzleGame.ViewModels;
 
 namespace PuzzleGame
 {
@@ -13,5 +15,14 @@ namespace PuzzleGame
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            var mw = new MainWindowView()
+            {
+                DataContext = new MainWindowViewModel()
+            };
+
+            mw.Show();
+        }
     }
 }
