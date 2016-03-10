@@ -82,7 +82,7 @@ namespace PuzzleGame.ViewModels
                     gameDragDropHardWindow.ShowDialog();
                     break;
                 default:
-                    // Message about error
+                    // Message about error should be there
                     break;
             }
         }
