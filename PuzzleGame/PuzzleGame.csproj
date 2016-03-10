@@ -60,6 +60,7 @@
     <Compile Include="Interface\IField.cs" />
     <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\Field1.cs" />
+    <Compile Include="Models\Field2.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="ViewModels\AboutAuthorsWindowViewModel.cs" />
     <Compile Include="ViewModels\Command.cs" />
