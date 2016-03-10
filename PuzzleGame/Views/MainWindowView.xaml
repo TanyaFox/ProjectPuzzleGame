@@ -11,9 +11,9 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="20">Добро пожаловать, дорогой игрок!</TextBlock>
-        <Button Grid.Row="1" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5">НОВАЯ ИГРА</Button>
-        <Button Grid.Row="2" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5">ПРОДОЛЖИТЬ ИГРУ</Button>
-        <Button Grid.Row="3" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5">АВТОРЫ</Button>
-        <Button Grid.Row="4" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5">ВЫХОД</Button>
+        <Button Grid.Row="1" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5" Command="{Binding ButtonNewGameCommand}">НОВАЯ ИГРА</Button>
+        <Button Grid.Row="2" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5" Command="{Binding ButtonSavedGameCommand}">ПРОДОЛЖИТЬ ИГРУ</Button>
+        <Button Grid.Row="3" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5" Command="{Binding ButtonAuthorsCommand}">АВТОРЫ</Button>
+        <!--<Button Grid.Row="4" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5" Command="{Binding ButtonExitCommand}">ВЫХОД</Button>-->
     </Grid>
 </Window>

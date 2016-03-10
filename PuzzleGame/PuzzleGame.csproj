@@ -62,6 +62,7 @@
     <Compile Include="Models\Field1.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="ViewModels\AboutAuthorsWindowViewModel.cs" />
+    <Compile Include="ViewModels\Command.cs" />
     <Compile Include="ViewModels\GameDragDropModeHardWindowViewModel.cs" />
     <Compile Include="ViewModels\GameDragDropModeMiddleWindowViewModel.cs" />
     <Compile Include="ViewModels\GameDragDropModeWindowViewModel.cs" />
