@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,35 @@ using PuzzleGame.Views;
 
 namespace PuzzleGame.ViewModels
 {
-    class MainWindowViewModel
+    class MainWindowViewModel : INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+
+        private bool _flag;
+        public bool Flag
+        {
+            get
+            {
+                return _flag;
+            }
+            set
+            {
+                _flag = value;
+                OnPropertyChanged("Flag");
+            }
+        }
+
         public MainWindowViewModel()
         {
             ButtonNewGameCommand = new Command(arg => ButtonNewGameClick());
+            ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
+            ButtonAuthorsCommand = new Command(arg => ButtonAuthorsClick());
+            //ButtonExitCommand = new Command(arg => ButtonExitClick());
         }
 
         public ICommand ButtonNewGameCommand { get; set; }
@@ -56,6 +81,9 @@ namespace PuzzleGame.ViewModels
                     var gameDragDropHardWindow = new GameDragDropModeHardWindowView();
                     gameDragDropHardWindow.ShowDialog();
                     break;
+                default:
+                    // Message about error
+                    break;
             }
         }
 
@@ -63,14 +91,18 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonAuthorsClick()
         {
-
+            var aboutWindow = new AboutAuthorsWindowView();
+            aboutWindow.ShowDialog();
         }
 
-        public ICommand ButtonExitCommand { get; set; }
+        //public ICommand ButtonExitCommand { get; set; }
 
-        private void ButtonExitClick()
-        {
+        //private void ButtonExitClick()
+        //{
+        //    Flag = true;
+        //    CloseAction(Flag);
+        //}
 
-        }
+        //public Action<bool> CloseAction { get; set; }
     }
 }

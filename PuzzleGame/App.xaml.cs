@@ -21,7 +21,7 @@ namespace PuzzleGame
             {
                 DataContext = new MainWindowViewModel()
             };
-
+         
             mw.Show();
         }
     }
