@@ -22,7 +22,25 @@
         <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="18">Загрузить картинку:</TextBlock>
         <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5"></ComboBox>
         <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5"></ComboBox>
-        <ListBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="270" Height="100" Margin="5"></ListBox>
+        <ListBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="270" Height="100" Margin="5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="5" BorderThickness="1" BorderBrush="SteelBlue" CornerRadius="4" Width="Auto">
+                        <Grid Margin="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding ImageName}"/>
+                            <Image Grid.Row="0" Grid.Column="1" Margin="10 0 5 0" Source="{Binding Image}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5"></TextBox>
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5" Height="25" Width="Auto">Загрузить</Button>
