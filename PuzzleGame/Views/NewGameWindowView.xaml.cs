@@ -26,7 +26,6 @@ namespace PuzzleGame.Views
 
             NewGameWindowViewModel vm = new NewGameWindowViewModel();
             this.DataContext = vm;
-
         }
     }
 }
