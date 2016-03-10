@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PuzzleGame.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace PuzzleGame.Interface
 {
     interface IField
     {
+        public List<Cell> ListCell { get; }
 
+        void CellChange(int first, int second);
     }
 }

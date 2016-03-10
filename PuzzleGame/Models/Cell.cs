@@ -10,22 +10,16 @@ namespace PuzzleGame.Models
     {
         public bool IsCorrect { get; set; }
         public int CurrentElement { get; set; }
-        public int Count { get; set; }
 
-        public Cell(int current, int count)
-        {
-            if (current == count)
-                IsCorrect = true;
-            else
-                IsCorrect = false;
-            this.Count = count;
-            this.CurrentElement = current;
-        }
-        public Cell(int count)
+        public Cell(int current)
         {
             IsCorrect = false;
-            this.Count = count;
-            this.CurrentElement = 1;
+            CurrentElement = current;
+        }
+        public Cell()
+        {
+            IsCorrect = false;
+            CurrentElement = -1;
         }
     }
 }
