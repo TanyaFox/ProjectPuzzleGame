@@ -11,16 +11,6 @@ namespace PuzzleGame.Models
     {
         public List<Cell> ListCell { get; set; }
 
-        public Field1(int cells)
-        {
-            List<Cell> Templist = new List<Cell>();
-            for (int i = 1; i <= cells; i++)
-            {
-                Templist.Add(new Cell());
-            }
-            this.ListCell = Templist;
-        }
-
         public Field1(List<int> rnd)
         {
             List<Cell> Templist = new List<Cell>();

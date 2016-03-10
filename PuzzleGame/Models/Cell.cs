@@ -19,7 +19,7 @@ namespace PuzzleGame.Models
         public Cell()
         {
             IsCorrect = false;
-            CurrentElement = -1;
+            CurrentElement = 0;
         }
     }
 }
