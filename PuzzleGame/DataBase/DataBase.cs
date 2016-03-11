@@ -61,9 +61,7 @@ namespace PuzzleGame
                             MemoryStream mStream = new MemoryStream(bBuffer);
                             PazzleParts.Add(reader.GetString(i + 1), mStream);
                         }
-
                     }
-
                 }
 
                 connection.Close();
@@ -71,8 +69,22 @@ namespace PuzzleGame
             return PazzleParts;
         }
 
-        public void SafeGame(string ImageName, int Type, int Difficulty)
-        { }
+        public void SafeGame(string ImageName, int Type, int Difficulty, string PartLocation)
+        {
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+
+                var cmd = new SqlCommand("СохранениеИгры", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ImageName", ImageName);
+                cmd.Parameters.AddWithValue("@Mode", Type);
+                cmd.Parameters.AddWithValue("@Level", Difficulty);
+                cmd.Parameters.AddWithValue("@Location", PartLocation);
+                connection.Open();
+                cmd.ExecuteReader();
+                connection.Close();
+            }
+        }
 
     }
 }
