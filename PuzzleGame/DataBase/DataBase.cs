@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.IO;
 using System.Data;
+using PuzzleGame.Models;
 
 namespace PuzzleGame
 {
@@ -61,9 +62,7 @@ namespace PuzzleGame
                             MemoryStream mStream = new MemoryStream(bBuffer);
                             PazzleParts.Add(reader.GetString(i + 1), mStream);
                         }
-
                     }
-
                 }
 
                 connection.Close();
@@ -71,9 +70,63 @@ namespace PuzzleGame
             return PazzleParts;
         }
 
-        public void SafeGame(string ImageName, int Type, int Difficulty)
-        { }
+        public void SafeGame(string ImageName, int Type, int Difficulty, string PartLocation)
+        {
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
 
+                var cmd = new SqlCommand("СохранениеИгры", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@ImageName", ImageName);
+                cmd.Parameters.AddWithValue("@Mode", Type);
+                cmd.Parameters.AddWithValue("@Level", Difficulty);
+                cmd.Parameters.AddWithValue("@Location", PartLocation);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void AddPicture(string ImageName, string ImageAdress)
+        {
+            FileStream fStream = new FileStream(ImageAdress, FileMode.Open, FileAccess.Read);
+            Byte[] imageBytes = new byte[fStream.Length];
+            fStream.Read(imageBytes, 0, imageBytes.Length);
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+
+                var cmd = new SqlCommand("ДобавлениеИзображения", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Name", ImageName);
+                cmd.Parameters.AddWithValue("@Miniature", imageBytes);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void AddPartsOfPicture(string ImageName, byte[] imageBytes, int Difficulty, int PartLocation)
+        {
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+
+                var cmd = new SqlCommand("ДобавлениеЧасти", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Name", ImageName);
+                cmd.Parameters.AddWithValue("@Part", imageBytes);
+                cmd.Parameters.AddWithValue("@Level", Difficulty);
+                cmd.Parameters.AddWithValue("@Location", PartLocation);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void LoadGame()
+        {
+            
+        }
     }
 }
 
