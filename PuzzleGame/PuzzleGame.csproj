@@ -58,6 +58,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Interface\IField.cs" />
+    <Compile Include="Interface\INavigationService.cs" />
     <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\Field1.cs" />
     <Compile Include="Models\Field2.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NavigationService.cs" />
     <Compile Include="Views\NewGameWindowView.xaml.cs">
       <DependentUpon>NewGameWindowView.xaml</DependentUpon>
     </Compile>
