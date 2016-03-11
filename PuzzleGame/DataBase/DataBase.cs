@@ -81,11 +81,46 @@ namespace PuzzleGame
                 cmd.Parameters.AddWithValue("@Level", Difficulty);
                 cmd.Parameters.AddWithValue("@Location", PartLocation);
                 connection.Open();
-                cmd.ExecuteReader();
+                cmd.ExecuteNonQuery();
                 connection.Close();
             }
         }
 
+        public void AddPicture(string ImageName, string ImageAdress)
+        {
+            FileStream fStream = new FileStream(ImageAdress, FileMode.Open, FileAccess.Read);
+            Byte[] imageBytes = new byte[fStream.Length];
+            fStream.Read(imageBytes, 0, imageBytes.Length);
+
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+
+                var cmd = new SqlCommand("ДобавлениеИзображения", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Name", ImageName);
+                cmd.Parameters.AddWithValue("@Miniature", imageBytes);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+        public void AddPartsOfPicture(string ImageName, byte[] imageBytes, int Difficulty, int PartLocation)
+        {
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+
+                var cmd = new SqlCommand("ДобавлениеЧасти", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Name", ImageName);
+                cmd.Parameters.AddWithValue("@Part", imageBytes);
+                cmd.Parameters.AddWithValue("@Level", Difficulty);
+                cmd.Parameters.AddWithValue("@Location", PartLocation);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
     }
 }
 
