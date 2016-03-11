@@ -10,9 +10,9 @@ namespace PuzzleGame.DB
     {
         public string ConString;
 
-        public void LoadMiniatures()
+        public Dictionary LoadMiniatures()
         {
-            Dictionary<string, string> Miniatures = new Dictionary<string, string>;
+            Dictionary<string, string> Miniatures = new Dictionary<string, string>();
             using (SqlConnection connection = new SqlConnection(conString))
             {
                 connection.Open();
@@ -32,6 +32,32 @@ namespace PuzzleGame.DB
                 connection.Close();
             }
             return Miniatures;
+        }
+    }
+
+    public Dictionary LoadPazzle(string PictureName, int GameLevel)
+    {
+        Dictionary<int, string> PazzleParts = new Dictionary<int, string>();
+        using (SqlConnection connection = new SqlConnection(conString)) 
+        {
+            
+            var cmd = new SqlCommand("ЗагрузкаПазла", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Name", PictureName);
+            cmd.Parameters.AddWithValue("@Level", GameLevel);
+            connection.Open();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read()) 
+                {
+                    for (int i = 0; i < reader.FieldCount; i = i + 2)
+                    {
+                        PazzleParts.Add(reader.GetInt32(i), reader.GetString(i + 1));
+                    }
+                }
+               
+            }
+            connection.Close();
         }
     }
 }
