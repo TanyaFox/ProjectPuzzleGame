@@ -57,6 +57,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DataBase.cs" />
     <Compile Include="Interface\IField.cs" />
     <Compile Include="Interface\INavigationService.cs" />
     <Compile Include="Models\Cell.cs" />
