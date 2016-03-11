@@ -58,6 +58,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Interface\IField.cs" />
+    <Compile Include="Interface\INavigationService.cs" />
     <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\Field1.cs" />
     <Compile Include="Models\Field2.cs" />
