@@ -5,12 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using PuzzleGame.Interface;
 using PuzzleGame.Views;
 
 namespace PuzzleGame.ViewModels
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {
+        private INavigationService _navigationService;
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {
@@ -34,6 +37,8 @@ namespace PuzzleGame.ViewModels
 
         public MainWindowViewModel()
         {
+            _navigationService = new NavigationService();
+
             ButtonNewGameCommand = new Command(arg => ButtonNewGameClick());
             ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
             ButtonAuthorsCommand = new Command(arg => ButtonAuthorsClick());
@@ -44,8 +49,7 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonNewGameClick()
         {
-            var newGameWindow = new NewGameWindowView();
-            newGameWindow.ShowDialog();
+            _navigationService.NavigateTo("NewGame");
         }
 
         public ICommand ButtonSavedGameCommand { get; set; }
@@ -58,31 +62,25 @@ namespace PuzzleGame.ViewModels
             switch (keyForWindowCreating)
             {
                 case "Tag1":
-                    var gameWindow = new GameWindowView();
-                    gameWindow.ShowDialog();
+                    _navigationService.NavigateTo(keyForWindowCreating);
                     break;
                 case "Tag2":
-                    var gameMiddleWindow = new GameMiddleWindowView();
-                    gameMiddleWindow.ShowDialog();
+                    _navigationService.NavigateTo(keyForWindowCreating);
                     break;
                 case "Tag3":
-                    var gameHardWindow = new GameHardWindowView();
-                    gameHardWindow.ShowDialog();
+                    _navigationService.NavigateTo(keyForWindowCreating);
                     break;
                 case "Drag&Drop1":
-                    var gameDragDropWindow = new GameDragDropModeWindowView();
-                    gameDragDropWindow.ShowDialog();
+                    _navigationService.NavigateTo(keyForWindowCreating);
                     break;
                 case "Drag&Drop2":
-                    var gameDragDropMiddleWindow = new GameDragDropModeMiddleWindowView();
-                    gameDragDropMiddleWindow.ShowDialog();
+                    _navigationService.NavigateTo(keyForWindowCreating);
                     break;
                 case "Drag&Drop3":
-                    var gameDragDropHardWindow = new GameDragDropModeHardWindowView();
-                    gameDragDropHardWindow.ShowDialog();
+                    _navigationService.NavigateTo(keyForWindowCreating);
                     break;
                 default:
-                    // Message about error should be there
+                    _navigationService.NavigateTo(keyForWindowCreating);
                     break;
             }
         }
@@ -91,8 +89,7 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonAuthorsClick()
         {
-            var aboutWindow = new AboutAuthorsWindowView();
-            aboutWindow.ShowDialog();
+            _navigationService.NavigateTo("AboutWindow");
         }
 
         //public ICommand ButtonExitCommand { get; set; }
