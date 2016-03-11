@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using System.Data.SqlClient;
 
 namespace PuzzleGame.DB
 {
@@ -20,7 +22,7 @@ namespace PuzzleGame.DB
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        while (reader.Read()) 
+                        while (reader.Read())
                         {
                             for (int i = 0; i < reader.FieldCount; i = i + 2)
                             {
@@ -35,29 +37,37 @@ namespace PuzzleGame.DB
         }
     }
 
-    public Dictionary LoadPazzle(string PictureName, int GameLevel)
+    public Dictionary LoadPazzle(string PictureName, int GameLevel)//Метод возвращает словарь типа "картинка-положение"
     {
-        Dictionary<int, string> PazzleParts = new Dictionary<int, string>();
-        using (SqlConnection connection = new SqlConnection(conString)) 
+        Dictionary<int, MemoryStream> PazzleParts = new Dictionary<int, MemoryStream>();
+        using (SqlConnection connection = new SqlConnection(conString))
         {
-            
+
             var cmd = new SqlCommand("ЗагрузкаПазла", connection);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Name", PictureName);
             cmd.Parameters.AddWithValue("@Level", GameLevel);
             connection.Open();
+            string name = "";
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                while (reader.Read()) 
+                while (reader.Read())
                 {
                     for (int i = 0; i < reader.FieldCount; i = i + 2)
                     {
-                        PazzleParts.Add(reader.GetInt32(i), reader.GetString(i + 1));
+                        int bLength = (int)reader.GetBytes(0, i, null, 0, int.MaxValue);
+                        byte[] bBuffer = new byte[bLength];
+                        reader.GetBytes(0, i, bBuffer, 0, bLength);
+                        MemoryStream mStream = new MemoryStream(bBuffer);
+                        PazzleParts.Add(reader.GetString(i + 1), mStream);
                     }
+
                 }
-               
+
             }
+
             connection.Close();
         }
+        return PazzleParts;
     }
 }
