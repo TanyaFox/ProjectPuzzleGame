@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.IO;
 using System.Data;
+using PuzzleGame.Models;
 
 namespace PuzzleGame
 {
@@ -120,6 +121,11 @@ namespace PuzzleGame
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
+        }
+
+        public void LoadGame()
+        {
+            
         }
     }
 }
