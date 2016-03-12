@@ -123,9 +123,24 @@ namespace PuzzleGame
             }
         }
 
-        public void LoadGame()
+        public Game LoadGame()
         {
-            
+            Game LastGame = new Game("", 0, 0, "");
+            using (SqlConnection connection = new SqlConnection(conString))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT l.ImageName, l.[Level], l.Mode, l.Location FROM dbo.LastGame as l", connection))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            LastGame =new Game(reader.GetString(reader.GetOrdinal("ImageName")), reader.GetInt32(reader.GetOrdinal("Level")), reader.GetInt32(reader.GetOrdinal("Mode")), reader.GetString(reader.GetOrdinal("Location")));
+                        }
+                    }
+                }
+            }
+            return LastGame;
         }
     }
 }
