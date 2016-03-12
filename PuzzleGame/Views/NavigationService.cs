@@ -20,6 +20,8 @@ namespace PuzzleGame.Views
             _windows["Drag&Drop1"] = new GameDragDropModeWindowView();
             _windows["Drag&Drop2"] = new GameDragDropModeMiddleWindowView();
             _windows["Drag&Drop3"] = new GameDragDropModeHardWindowView();
+            _windows["AboutWindow"] = new AboutAuthorsWindowView();
+            _windows["NewGame"] = new NewGameWindowView();
         }
 
         public void NavigateTo(string windowName)
@@ -28,6 +30,10 @@ namespace PuzzleGame.Views
             if (_windows.TryGetValue(windowName, out windowObj))
             {
                 windowObj.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка!");
             }
         }
     }
