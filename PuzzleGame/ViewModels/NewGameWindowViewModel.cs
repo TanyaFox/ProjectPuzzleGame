@@ -20,8 +20,8 @@ namespace PuzzleGame.ViewModels
 
         private INavigationService _navigationService;
 
-        private bool _gameMode; //Type should be changed later
-        public bool GameMode
+        private Dictionary<string,string> _gameMode; //Type should be changed later
+        public Dictionary<string,string> GameMode
         {
             get
             {
@@ -34,7 +34,21 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private bool _listOfPictures; //Type should be changed later
+        private Dictionary<int, string> _levelDifficulty; //Type should be changed later
+        public Dictionary<int, string> LevelDifficulty
+        {
+            get
+            {
+                return _levelDifficulty;
+            }
+            set
+            {
+                _levelDifficulty = value;
+                OnPropertyChanged("LevelDifficulty");
+            }
+        }
+
+        private bool _listOfPictures; //Type should be changed after Igor will add special class for list of miniatures
         public bool ListOfPictures
         {
             get
@@ -50,7 +64,17 @@ namespace PuzzleGame.ViewModels
 
         public NewGameWindowViewModel()
         {
+            _gameMode = new Dictionary<string, string>(); //Maybe, these should be implemented somewhere else, special class?
+            GameMode["Tag"] = "Пятнашки";
+            GameMode["Drag&Drop"] = "Кусочки";
+
+            _levelDifficulty = new Dictionary<int, string>();
+            LevelDifficulty[1] = "Легко";
+            LevelDifficulty[2] = "Средне";
+            LevelDifficulty[3] = "Сложно";
+
             ButtonPlayCommand = new Command(arg => ButtonPlayClick());
+
         }
 
         public ICommand ButtonPlayCommand { get; set; }

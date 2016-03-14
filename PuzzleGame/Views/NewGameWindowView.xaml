@@ -20,8 +20,8 @@
         <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="18">Уровень сложности:</TextBlock>
         <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="5" FontSize="18">Выбрать картинку:</TextBlock>
         <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="18">Загрузить картинку:</TextBlock>
-        <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5" ItemsSource="{Binding GameMode}"></ComboBox>
-        <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5" ItemsSource="{Binding LevelDifficulty}"></ComboBox>
+        <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5" ItemsSource="{Binding GameMode.Values}"></ComboBox>
+        <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5" ItemsSource="{Binding LevelDifficulty.Values}"></ComboBox>
         <ListBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="270" Height="100" Margin="5" ItemsSource="{Binding ListOfPictures}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
