@@ -49,7 +49,7 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonNewGameClick()
         {
-            _navigationService.NavigateTo("NewGame");
+            _navigationService.NavigateTo("BeforeNewGame");
         }
 
         public ICommand ButtonSavedGameCommand { get; set; }

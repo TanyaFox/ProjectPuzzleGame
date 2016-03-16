@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Win32;
 using PuzzleGame.Interface;
 
 namespace PuzzleGame.Views
@@ -22,6 +23,7 @@ namespace PuzzleGame.Views
             _windows["Drag&Drop3"] = new GameDragDropModeHardWindowView();
             _windows["AboutWindow"] = new AboutAuthorsWindowView();
             _windows["NewGame"] = new NewGameWindowView();
+            _windows["BeforeNewGame"] = new BeforeNewGameWindowView();
         }
 
         public void NavigateTo(string windowName)
@@ -36,5 +38,6 @@ namespace PuzzleGame.Views
                 MessageBox.Show("Ошибка!");
             }
         }
+
     }
 }

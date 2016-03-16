@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -76,6 +77,9 @@
     <Compile Include="ViewModels\NewGameWindowViewModel.cs" />
     <Compile Include="Views\AboutAuthorsWindowView.xaml.cs">
       <DependentUpon>AboutAuthorsWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BeforeNewGameWindowView.xaml.cs">
+      <DependentUpon>BeforeNewGameWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameDragDropModeHardWindowView.xaml.cs">
       <DependentUpon>GameDragDropModeHardWindowView.xaml</DependentUpon>
@@ -118,7 +122,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -130,9 +134,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Page Include="Views\AboutAuthorsWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BeforeNewGameWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -168,6 +175,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BorderLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BorderRight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
