@@ -20,7 +20,7 @@ namespace PuzzleGame.ViewModels
 
         private INavigationService _navigationService;
 
-        private Dictionary<string,string> _gameMode; //Type should be changed later
+        private Dictionary<string,string> _gameMode;
         public Dictionary<string,string> GameMode
         {
             get
@@ -34,7 +34,7 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private Dictionary<int, string> _levelDifficulty; //Type should be changed later
+        private Dictionary<int, string> _levelDifficulty;
         public Dictionary<int, string> LevelDifficulty
         {
             get
@@ -59,6 +59,20 @@ namespace PuzzleGame.ViewModels
             {
                 _listOfPictures = value;
                 OnPropertyChanged("ListOfPictures");
+            }
+        }
+
+        private bool _selectedImage; //Type should be changed after Igor will add special class for list of miniatures
+        public bool SelectedImage
+        {
+            get
+            {
+                return _selectedImage;
+            }
+            set
+            {
+                _selectedImage = value;
+                OnPropertyChanged("SelectedImage");
             }
         }
 

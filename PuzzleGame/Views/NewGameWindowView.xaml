@@ -22,7 +22,7 @@
         <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" FontSize="18">Загрузить картинку:</TextBlock>
         <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5" ItemsSource="{Binding GameMode.Values}" SelectedItem="{Binding Mode}"></ComboBox>
         <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="5" ItemsSource="{Binding LevelDifficulty.Values}" SelectedItem="{Binding Difficulty}"></ComboBox>
-        <ListBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="270" Height="100" Margin="5" ItemsSource="{Binding ListOfPictures}" SelectedItem="{Binding ImageID}">
+        <ListBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="270" Height="100" Margin="5" ItemsSource="{Binding ListOfPictures}" SelectedItem="{Binding SelectedImage}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border Margin="5" BorderThickness="1" BorderBrush="SteelBlue" CornerRadius="4" Width="Auto">
