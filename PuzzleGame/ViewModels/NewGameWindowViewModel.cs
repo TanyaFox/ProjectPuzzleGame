@@ -62,6 +62,34 @@ namespace PuzzleGame.ViewModels
             }
         }
 
+        private string _mode;
+        public string Mode
+        {
+            get
+            {
+                return _mode;
+            }
+            set
+            {
+                _mode = value;
+                OnPropertyChanged("Mode");
+            }
+        }
+
+        private string _difficulty;
+        public string Difficulty
+        {
+            get
+            {
+                return _difficulty;
+            }
+            set
+            {
+                _difficulty = value;
+                OnPropertyChanged("Difficulty");
+            }
+        }
+
         public NewGameWindowViewModel()
         {
             _gameMode = new Dictionary<string, string>(); //Maybe, these should be implemented somewhere else, special class?
@@ -81,6 +109,8 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonPlayClick()
         {
+            //Here should be logic of forming a string from Mode and Difficulty
+            //An example of string, that should be put: "Tag" + "&" + "2"
             _navigationService.NavigateTo(""); //Here should be put the name from user's setting (from form)
         }
     }
