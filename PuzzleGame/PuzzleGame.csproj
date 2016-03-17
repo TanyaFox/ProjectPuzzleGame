@@ -65,9 +65,11 @@
     <Compile Include="Models\Field1.cs" />
     <Compile Include="Models\Field2.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\Methods.cs" />
     <Compile Include="ViewModels\AboutAuthorsWindowViewModel.cs" />
     <Compile Include="ViewModels\BeforeNewGameWindowViewModel.cs" />
     <Compile Include="ViewModels\Command.cs" />
+    <Compile Include="ViewModels\CustomNewGameWindowViewModel.cs" />
     <Compile Include="ViewModels\GameDragDropModeHardWindowViewModel.cs" />
     <Compile Include="ViewModels\GameDragDropModeMiddleWindowViewModel.cs" />
     <Compile Include="ViewModels\GameDragDropModeWindowViewModel.cs" />
@@ -81,6 +83,9 @@
     </Compile>
     <Compile Include="Views\BeforeNewGameWindowView.xaml.cs">
       <DependentUpon>BeforeNewGameWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomNewGameWindowView.xaml.cs">
+      <DependentUpon>CustomNewGameWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\GameDragDropModeHardWindowView.xaml.cs">
       <DependentUpon>GameDragDropModeHardWindowView.xaml</DependentUpon>
@@ -104,6 +109,7 @@
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationService.cs" />
+    <Compile Include="Views\NavigationServiceForSettings.cs" />
     <Compile Include="Views\NewGameWindowView.xaml.cs">
       <DependentUpon>NewGameWindowView.xaml</DependentUpon>
     </Compile>
@@ -141,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BeforeNewGameWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CustomNewGameWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleGame.Models
 {
-    class Field2 : IField
+    class Field2 : IField //Drag'n'drop
     {
         public List<Cell> ListCell
         { get; set; }
@@ -18,6 +18,16 @@ namespace PuzzleGame.Models
             for (int i = 1; i <= cells; i++)
             {
                 Templist.Add(new Cell());
+            }
+            this.ListCell = Templist;
+        }
+
+        public Field2(List<int> CurrentState)
+        {
+            List<Cell> Templist = new List<Cell>();
+            foreach (int i in CurrentState)
+            {
+                Templist.Add(new Cell(i));
             }
             this.ListCell = Templist;
         }

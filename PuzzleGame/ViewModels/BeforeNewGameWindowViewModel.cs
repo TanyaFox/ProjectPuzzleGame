@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,24 @@ namespace PuzzleGame.ViewModels
     {
         private INavigationService _navigation;
 
-        public BeforeNewGameWindowViewModel(INavigationService nav)
+        private bool _flag;
+        public bool Flag
         {
-            _navigation = nav;
+            get
+            {
+                return _flag;
+            }
+            set
+            {
+                _flag = value;
+            }
+        }
+
+        public Action<bool> CloseAction { get; set; }
+
+        public BeforeNewGameWindowViewModel()
+        {
+            //_navigation = new NavigationServiceForSettings();
             ButtonFromDBCommand = new Command(arg => ButtonFromDBClick());
             ButtonUploadCommand = new Command(arg => ButtonUploadClick());
         }
@@ -24,14 +40,20 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonFromDBClick()
         {
+            _navigation = new NavigationService();
             _navigation.NavigateTo("NewGame");
+            Flag = true;
+            CloseAction(Flag);
         }
 
         public ICommand ButtonUploadCommand { get; set; }
 
         private void ButtonUploadClick()
         {
-
+            _navigation = new NavigationService();
+            _navigation.NavigateTo("CustomNewGame");
+            Flag = true;
+            CloseAction(Flag);
         }
     }
 }

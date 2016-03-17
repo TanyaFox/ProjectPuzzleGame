@@ -10,7 +10,7 @@ using PuzzleGame.Views;
 
 namespace PuzzleGame.ViewModels
 {
-    class NewGameWindowViewModel : INotifyPropertyChanged
+    class CustomNewGameWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
@@ -49,34 +49,6 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private bool _listOfPictures; //Type should be changed after Igor will add special class for list of miniatures
-        public bool ListOfPictures
-        {
-            get
-            {
-                return _listOfPictures;
-            }
-            set
-            {
-                _listOfPictures = value;
-                OnPropertyChanged("ListOfPictures");
-            }
-        }
-
-        private bool _selectedImage; //Type should be changed after Igor will add special class for list of miniatures
-        public bool SelectedImage
-        {
-            get
-            {
-                return _selectedImage;
-            }
-            set
-            {
-                _selectedImage = value;
-                OnPropertyChanged("SelectedImage");
-            }
-        }
-
         private string _mode;
         public string Mode
         {
@@ -105,7 +77,35 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        public NewGameWindowViewModel()
+        private string _flag;
+        public string Flag
+        {
+            get
+            {
+                return _flag;
+            }
+            set
+            {
+                _flag = value;
+                OnPropertyChanged("Flag");
+            }
+        }
+
+        private string _progressLabel;
+        public string ProgressLabel
+        {
+            get
+            {
+                return _progressLabel;
+            }
+            set
+            {
+                _progressLabel = value;
+                OnPropertyChanged("ProgressLabel");
+            }
+        }
+
+        public CustomNewGameWindowViewModel()
         {
             //_navigationService = new NavigationService();
             _gameMode = new Dictionary<string, string>(); //Maybe, these should be implemented somewhere else, special class?
@@ -118,10 +118,12 @@ namespace PuzzleGame.ViewModels
             LevelDifficulty[3] = "Сложно";
 
             ButtonPlayCommand = new Command(arg => ButtonPlayClick());
+            ButtonUploadPictureCommand = new Command(arg => ButtonDownloadPictureClick());
 
         }
 
         public ICommand ButtonPlayCommand { get; set; }
+        public ICommand ButtonUploadPictureCommand { get; set; }
 
         private void ButtonPlayClick()
         {
@@ -129,6 +131,11 @@ namespace PuzzleGame.ViewModels
             //Here should be logic of forming a string from Mode and Difficulty
             //An example of string, that should be put: "Tag" + "&" + "2"
             _navigationService.NavigateTo("Tag1"); //Here should be put the name from user's setting (from form)
+        }
+
+        private void ButtonDownloadPictureClick()
+        {
+            //Here should be logic for 
         }
     }
 }
