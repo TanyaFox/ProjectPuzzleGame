@@ -14,7 +14,7 @@ namespace PuzzleGame.Views
     {
         Dictionary<string, Window> _windows = new Dictionary<string, Window>();
 
-        public NavigationService(INavigationService nav)
+        public NavigationService()
         {
             _windows["Tag1"] = new GameWindowView();
             _windows["Tag2"] = new GameMiddleWindowView();
@@ -23,8 +23,7 @@ namespace PuzzleGame.Views
             _windows["Drag&Drop2"] = new GameDragDropModeMiddleWindowView();
             _windows["Drag&Drop3"] = new GameDragDropModeHardWindowView();
             _windows["AboutWindow"] = new AboutAuthorsWindowView();
-            _windows["NewGame"] = new NewGameWindowView();
-            _windows["BeforeNewGame"] = new BeforeNewGameWindowView(nav);
+            _windows["BeforeNewGame"] = new BeforeNewGameWindowView();
         }
 
         public void NavigateTo(string windowName)

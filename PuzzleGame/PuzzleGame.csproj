@@ -104,6 +104,7 @@
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationService.cs" />
+    <Compile Include="Views\NavigationServiceForSettings.cs" />
     <Compile Include="Views\NewGameWindowView.xaml.cs">
       <DependentUpon>NewGameWindowView.xaml</DependentUpon>
     </Compile>

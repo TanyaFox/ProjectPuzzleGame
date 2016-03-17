@@ -22,11 +22,11 @@ namespace PuzzleGame.Views
     public partial class BeforeNewGameWindowView : Window
     {
         
-        public BeforeNewGameWindowView(INavigationService nav)
+        public BeforeNewGameWindowView()
         {
             InitializeComponent();
             
-            BeforeNewGameWindowViewModel vm = new BeforeNewGameWindowViewModel(nav);
+            BeforeNewGameWindowViewModel vm = new BeforeNewGameWindowViewModel();
             this.DataContext = vm;
         }
     }

@@ -13,9 +13,9 @@ namespace PuzzleGame.ViewModels
     {
         private INavigationService _navigation;
 
-        public BeforeNewGameWindowViewModel(INavigationService nav)
+        public BeforeNewGameWindowViewModel()
         {
-            _navigation = nav;
+            _navigation = new NavigationServiceForSettings();
             ButtonFromDBCommand = new Command(arg => ButtonFromDBClick());
             ButtonUploadCommand = new Command(arg => ButtonUploadClick());
         }
