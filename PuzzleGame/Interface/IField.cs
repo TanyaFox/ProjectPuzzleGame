@@ -9,8 +9,7 @@ namespace PuzzleGame.Interface
 {
     interface IField
     {
-        //public List<Cell> ListCell { get; }
-
+        List<Cell> ListCell { get; }
         void CellChange(int first, int second);
     }
 }

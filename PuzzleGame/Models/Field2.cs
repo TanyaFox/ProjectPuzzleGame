@@ -22,6 +22,16 @@ namespace PuzzleGame.Models
             this.ListCell = Templist;
         }
 
+        public Field2(List<int> CurrentState)
+        {
+            List<Cell> Templist = new List<Cell>();
+            foreach (int i in CurrentState)
+            {
+                Templist.Add(new Cell(i));
+            }
+            this.ListCell = Templist;
+        }
+
         public void CellChange(int first, int second)
         {
             if (first == second)
