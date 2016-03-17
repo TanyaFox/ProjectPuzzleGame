@@ -77,6 +77,34 @@ namespace PuzzleGame.ViewModels
             }
         }
 
+        private string _flag;
+        public string Flag
+        {
+            get
+            {
+                return _flag;
+            }
+            set
+            {
+                _flag = value;
+                OnPropertyChanged("Flag");
+            }
+        }
+
+        private string _progressLabel;
+        public string ProgressLabel
+        {
+            get
+            {
+                return _progressLabel;
+            }
+            set
+            {
+                _progressLabel = value;
+                OnPropertyChanged("ProgressLabel");
+            }
+        }
+
         public CustomNewGameWindowViewModel()
         {
             //_navigationService = new NavigationService();
