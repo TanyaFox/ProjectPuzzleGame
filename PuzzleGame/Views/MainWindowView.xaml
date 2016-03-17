@@ -1,7 +1,7 @@
 ﻿<Window x:Class="PuzzleGame.Views.MainWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Паззлы" Height="300" Width="350">
+        Title="Puzzle World!" Height="700" Width="950" Icon="/Resources/MainIcon.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -9,11 +9,20 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="20">Добро пожаловать, дорогой игрок!</TextBlock>
-        <Button Grid.Row="1" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5" Command="{Binding ButtonNewGameCommand}">НОВАЯ ИГРА</Button>
-        <Button Grid.Row="2" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5" Command="{Binding ButtonSavedGameCommand}">ПРОДОЛЖИТЬ ИГРУ</Button>
-        <Button Grid.Row="3" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5" Command="{Binding ButtonAuthorsCommand}">АВТОРЫ</Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0" Grid.ColumnSpan="3" Width="800" Height="155" Margin="20" Source="/Resources/Header.png"/>
+        <Image Grid.Row="1" Grid.RowSpan="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="150" Height="370" Margin="20" Source="/Resources/BorderLeft.png"/>
+        <Image Grid.Row="1" Grid.RowSpan="5" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Width="150" Height="370" Margin="20" Source="/Resources/BorderRight.png"/>
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" FontFamily="Comic Sans MS Bold" Margin="20">Добро пожаловать, дорогой игрок!</TextBlock>
+        <Button Grid.Row="2" Grid.Column="1" Height="60" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" FontFamily="Comic Sans MS Bold" Margin="0 5 0 5" Background="Bisque" Command="{Binding ButtonNewGameCommand}">НОВАЯ ИГРА</Button>
+        <Button Grid.Row="3" Grid.Column="1" Height="60" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" FontFamily="Comic Sans MS Bold" Margin="0 5 0 5" Background="Bisque" Command="{Binding ButtonSavedGameCommand}">ПРОДОЛЖИТЬ ИГРУ</Button>
+        <Button Grid.Row="4" Grid.Column="1" Height="60" Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" FontFamily="Comic Sans MS Bold" Margin="0 5 0 5" Background="Bisque" Command="{Binding ButtonAuthorsCommand}">АВТОРЫ</Button>
         <!--<Button Grid.Row="4" Height="30" Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 5" Command="{Binding ButtonExitCommand}">ВЫХОД</Button>-->
     </Grid>
 </Window>

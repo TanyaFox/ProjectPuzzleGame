@@ -13,6 +13,7 @@ namespace PuzzleGame.ViewModels
     class MainWindowViewModel : INotifyPropertyChanged
     {
         private INavigationService _navigationService;
+        public INavigationService NavigationService { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
@@ -21,24 +22,23 @@ namespace PuzzleGame.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
-        private bool _flag;
-        public bool Flag
-        {
-            get
-            {
-                return _flag;
-            }
-            set
-            {
-                _flag = value;
-                OnPropertyChanged("Flag");
-            }
-        }
+        //private bool _flag;
+        //public bool Flag
+        //{
+        //    get
+        //    {
+        //        return _flag;
+        //    }
+        //    set
+        //    {
+        //        _flag = value;
+        //        OnPropertyChanged("Flag");
+        //    }
+        //}
 
         public MainWindowViewModel()
         {
-            _navigationService = new NavigationService();
-
+            _navigationService = new NavigationService(_navigationService);
             ButtonNewGameCommand = new Command(arg => ButtonNewGameClick());
             ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
             ButtonAuthorsCommand = new Command(arg => ButtonAuthorsClick());
@@ -49,7 +49,7 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonNewGameClick()
         {
-            _navigationService.NavigateTo("NewGame");
+            _navigationService.NavigateTo("BeforeNewGame");
         }
 
         public ICommand ButtonSavedGameCommand { get; set; }
