@@ -125,7 +125,7 @@ namespace PuzzleGame
 
         public Game LoadGame()
         {
-            Game LastGame = new Game("", 0, 0, "");
+            Game LastGame = new Game(1, 0, 0, "");
             using (SqlConnection connection = new SqlConnection(conString))
             {
                 connection.Open();
@@ -135,7 +135,7 @@ namespace PuzzleGame
                     {
                         while (reader.Read())
                         {
-                            LastGame =new Game(reader.GetString(reader.GetOrdinal("ImageName")), reader.GetInt32(reader.GetOrdinal("Level")), reader.GetInt32(reader.GetOrdinal("Mode")), reader.GetString(reader.GetOrdinal("Location")));
+                            LastGame =new Game(reader.GetInt32(reader.GetOrdinal("ImageId")), reader.GetInt32(reader.GetOrdinal("Level")), reader.GetInt32(reader.GetOrdinal("Mode")), reader.GetString(reader.GetOrdinal("Location")));
                         }
                     }
                 }
