@@ -66,6 +66,7 @@
     <Compile Include="Models\Field2.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="ViewModels\AboutAuthorsWindowViewModel.cs" />
+    <Compile Include="ViewModels\BeforeNewGameWindowViewModel.cs" />
     <Compile Include="ViewModels\Command.cs" />
     <Compile Include="ViewModels\GameDragDropModeHardWindowViewModel.cs" />
     <Compile Include="ViewModels\GameDragDropModeMiddleWindowViewModel.cs" />
@@ -184,6 +185,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\BorderRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MainIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ChosePictureFromDB.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MyPicture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

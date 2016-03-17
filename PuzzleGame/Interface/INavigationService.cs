@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PuzzleGame.Interface
 {
-    interface INavigationService
+    public interface INavigationService
     {
-        void NavigateTo(string windowName);
+        void NavigateTo( string windowName);
     }
 }

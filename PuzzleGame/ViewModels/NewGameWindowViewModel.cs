@@ -107,6 +107,7 @@ namespace PuzzleGame.ViewModels
 
         public NewGameWindowViewModel()
         {
+            //_navigationService = new NavigationService();
             _gameMode = new Dictionary<string, string>(); //Maybe, these should be implemented somewhere else, special class?
             GameMode["Tag"] = "Пятнашки";
             GameMode["Drag&Drop"] = "Кусочки";
@@ -129,7 +130,7 @@ namespace PuzzleGame.ViewModels
         {
             //Here should be logic of forming a string from Mode and Difficulty
             //An example of string, that should be put: "Tag" + "&" + "2"
-            _navigationService.NavigateTo(""); //Here should be put the name from user's setting (from form)
+            _navigationService.NavigateTo("Tag1"); //Here should be put the name from user's setting (from form)
         }
 
         private void ButtonDownloadPictureClick()

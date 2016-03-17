@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Win32;
 using PuzzleGame.Interface;
+using PuzzleGame.ViewModels;
 
 namespace PuzzleGame.Views
 {
@@ -13,7 +14,7 @@ namespace PuzzleGame.Views
     {
         Dictionary<string, Window> _windows = new Dictionary<string, Window>();
 
-        public NavigationService()
+        public NavigationService(INavigationService nav)
         {
             _windows["Tag1"] = new GameWindowView();
             _windows["Tag2"] = new GameMiddleWindowView();
@@ -23,7 +24,7 @@ namespace PuzzleGame.Views
             _windows["Drag&Drop3"] = new GameDragDropModeHardWindowView();
             _windows["AboutWindow"] = new AboutAuthorsWindowView();
             _windows["NewGame"] = new NewGameWindowView();
-            _windows["BeforeNewGame"] = new BeforeNewGameWindowView();
+            _windows["BeforeNewGame"] = new BeforeNewGameWindowView(nav);
         }
 
         public void NavigateTo(string windowName)
