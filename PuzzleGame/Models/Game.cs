@@ -8,14 +8,14 @@ namespace PuzzleGame.Models
 {
     public class Game
     {
-        public string ImagName { get; set; }
+        public int ImageID { get; set; }
         public int Difficulty { get; set; }
         public int Type { get; set; }
         public string PartsLocation { get; set; }
 
-        public Game(string Name, int dif, int type, string location)
+        public Game(int ID, int dif, int type, string location)
         {
-            ImagName = Name;
+            ImageID = ID;
             Difficulty = dif;
             Type = type;
             PartsLocation = location;

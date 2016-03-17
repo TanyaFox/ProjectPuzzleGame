@@ -23,13 +23,15 @@ namespace PuzzleGame.Models
                 return new Field1(LoadedState);
             }
             else if (savedGame.Type == 2)
-            {
-                return new Field2(LoadedState);
-            }
+                {
+                    return new Field2(LoadedState);
+                }
             else
                 throw new ArgumentException();
 
         }
+
+        //public IField CreateNewGame()
 
     }
 }
