@@ -39,9 +39,9 @@ namespace PuzzleGame
         }
 
 
-        public Dictionary<string, MemoryStream> LoadPazzle(string PictureName, int GameLevel)//Метод возвращает словарь типа "картинка-положение картинки"
+        public Dictionary<string, MemoryStream> LoadPuzzle(string PictureName, int GameLevel)//Метод возвращает словарь типа "картинка-положение картинки"
         {
-            Dictionary<string, MemoryStream> PazzleParts = new Dictionary<string, MemoryStream>();
+            Dictionary<string, MemoryStream> PuzzleParts = new Dictionary<string, MemoryStream>();
             using (SqlConnection connection = new SqlConnection(conString))
             {
 
@@ -60,17 +60,17 @@ namespace PuzzleGame
                             byte[] bBuffer = new byte[bLength];
                             reader.GetBytes(0, i, bBuffer, 0, bLength);
                             MemoryStream mStream = new MemoryStream(bBuffer);
-                            PazzleParts.Add(reader.GetString(i + 1), mStream);
+                            PuzzleParts.Add(reader.GetString(i + 1), mStream);
                         }
                     }
                 }
 
                 connection.Close();
             }
-            return PazzleParts;
+            return PuzzleParts;
         }
 
-        public void SafeGame(string ImageName, int Type, int Difficulty, string PartLocation)
+        public void SaveGame(string ImageName, int Type, int Difficulty, string PartLocation)
         {
             using (SqlConnection connection = new SqlConnection(conString))
             {
