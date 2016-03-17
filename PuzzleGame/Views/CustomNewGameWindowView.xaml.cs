@@ -11,24 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using PuzzleGame.Interface;
-using PuzzleGame.ViewModels;
 
 namespace PuzzleGame.Views
 {
     /// <summary>
-    /// Логика взаимодействия для BeforeNewGameWindowView.xaml
+    /// Логика взаимодействия для CustomNewGameWindowView.xaml
     /// </summary>
-    public partial class BeforeNewGameWindowView : Window
+    public partial class CustomNewGameWindowView : Window
     {
-        
-        public BeforeNewGameWindowView()
+        public CustomNewGameWindowView()
         {
             InitializeComponent();
-            
-            BeforeNewGameWindowViewModel vm = new BeforeNewGameWindowViewModel();
-            this.DataContext = vm;
-            vm.CloseAction += flag => { if (flag == true) this.Close(); };
         }
     }
 }

@@ -15,6 +15,7 @@ namespace PuzzleGame.Views
         public NavigationServiceForSettings()
         {
             _windows["NewGame"] = new NewGameWindowView();
+            _windows["CustomNewGame"] = new CustomNewGameWindowView();
         }
 
         public void NavigateTo(string windowName)
