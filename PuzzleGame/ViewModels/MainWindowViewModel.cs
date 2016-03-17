@@ -38,7 +38,7 @@ namespace PuzzleGame.ViewModels
 
         public MainWindowViewModel()
         {
-            _navigationService = new NavigationService();
+            //_navigationService = new NavigationService();
             ButtonNewGameCommand = new Command(arg => ButtonNewGameClick());
             ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
             ButtonAuthorsCommand = new Command(arg => ButtonAuthorsClick());
@@ -49,6 +49,7 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonNewGameClick()
         {
+            _navigationService = new NavigationService();
             _navigationService.NavigateTo("BeforeNewGame");
         }
 

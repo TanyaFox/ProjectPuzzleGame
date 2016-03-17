@@ -31,7 +31,7 @@ namespace PuzzleGame.ViewModels
 
         public BeforeNewGameWindowViewModel()
         {
-            _navigation = new NavigationServiceForSettings();
+            //_navigation = new NavigationServiceForSettings();
             ButtonFromDBCommand = new Command(arg => ButtonFromDBClick());
             ButtonUploadCommand = new Command(arg => ButtonUploadClick());
         }
@@ -40,6 +40,7 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonFromDBClick()
         {
+            _navigation = new NavigationService();
             _navigation.NavigateTo("NewGame");
             Flag = true;
             CloseAction(Flag);
@@ -49,6 +50,7 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonUploadClick()
         {
+            _navigation = new NavigationService();
             _navigation.NavigateTo("CustomNewGame");
             Flag = true;
             CloseAction(Flag);

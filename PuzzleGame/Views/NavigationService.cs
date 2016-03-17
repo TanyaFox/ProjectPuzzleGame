@@ -24,6 +24,8 @@ namespace PuzzleGame.Views
             _windows["Drag&Drop3"] = new GameDragDropModeHardWindowView();
             _windows["AboutWindow"] = new AboutAuthorsWindowView();
             _windows["BeforeNewGame"] = new BeforeNewGameWindowView();
+            _windows["NewGame"] = new NewGameWindowView();
+            _windows["CustomNewGame"] = new CustomNewGameWindowView();
         }
 
         public void NavigateTo(string windowName)

@@ -117,25 +117,18 @@ namespace PuzzleGame.ViewModels
             LevelDifficulty[2] = "Средне";
             LevelDifficulty[3] = "Сложно";
 
-            //_navigationService = new NavigationService();
             ButtonPlayCommand = new Command(arg => ButtonPlayClick());
-            ButtonDownloadPictureCommand = new Command(arg => ButtonDownloadPictureClick());
 
         }
 
         public ICommand ButtonPlayCommand { get; set; }
-        public ICommand ButtonDownloadPictureCommand { get; set; }
 
         private void ButtonPlayClick()
         {
+            _navigationService = new NavigationService();
             //Here should be logic of forming a string from Mode and Difficulty
             //An example of string, that should be put: "Tag" + "&" + "2"
             _navigationService.NavigateTo("Tag1"); //Here should be put the name from user's setting (from form)
-        }
-
-        private void ButtonDownloadPictureClick()
-        {
-            //Here should be logic for 
         }
     }
 }
