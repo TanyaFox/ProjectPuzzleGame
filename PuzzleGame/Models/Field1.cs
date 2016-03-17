@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleGame.Models
 {
-    class Field1 : IField
+    class Field1 : IField//Пятнашки
     {
         public List<Cell> ListCell { get; set; }
 
@@ -28,6 +28,10 @@ namespace PuzzleGame.Models
             var temp = ListCell[first].CurrentElement;
             ListCell[first].CurrentElement = ListCell[second].CurrentElement;
             ListCell[second].CurrentElement = temp;
+            if (ListCell[first].CurrentElement == first)
+                ListCell[first].IsCorrect = true;
+            if (ListCell[second].CurrentElement == second)
+                ListCell[second].IsCorrect = true;
         }
     }
 }

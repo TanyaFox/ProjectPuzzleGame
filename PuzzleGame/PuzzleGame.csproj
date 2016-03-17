@@ -65,6 +65,7 @@
     <Compile Include="Models\Field1.cs" />
     <Compile Include="Models\Field2.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\Methods.cs" />
     <Compile Include="ViewModels\AboutAuthorsWindowViewModel.cs" />
     <Compile Include="ViewModels\BeforeNewGameWindowViewModel.cs" />
     <Compile Include="ViewModels\Command.cs" />

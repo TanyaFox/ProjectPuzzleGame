@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleGame.Models
 {
-    class Field2 : IField
+    class Field2 : IField //Drag'n'drop
     {
         public List<Cell> ListCell
         { get; set; }
