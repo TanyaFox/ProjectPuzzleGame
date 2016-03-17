@@ -12,11 +12,11 @@ namespace PuzzleGame
 {
     class DataBase
     {
-        public string conString="";
+        public string conString = "";
 
-        public Dictionary<string, string> LoadMiniatures()
+        public List<Miniature> LoadMiniatures()
         {
-            Dictionary<string, string> Miniatures = new Dictionary<string, string>();
+            List<Miniature> Miniatures = new List<Miniature>();
             using (SqlConnection connection = new SqlConnection(conString))
             {
                 connection.Open();
@@ -26,9 +26,9 @@ namespace PuzzleGame
                     {
                         while (reader.Read())
                         {
-                            for (int i = 0; i < reader.FieldCount; i = i + 2)
+                            for (int i = 0; i < reader.FieldCount; i = i + 3)
                             {
-                                Miniatures.Add(reader.GetString(i), reader.GetString(i + 1));
+                                Miniatures.Add(new Miniature(reader.GetInt32(i), reader.GetString(i + 1), reader.GetString(i+2)));
                             }
                         }
                     }
@@ -135,7 +135,7 @@ namespace PuzzleGame
                     {
                         while (reader.Read())
                         {
-                            LastGame =new Game(reader.GetInt32(reader.GetOrdinal("ImageId")), reader.GetInt32(reader.GetOrdinal("Level")), reader.GetInt32(reader.GetOrdinal("Mode")), reader.GetString(reader.GetOrdinal("Location")));
+                            LastGame = new Game(reader.GetInt32(reader.GetOrdinal("ImageId")), reader.GetInt32(reader.GetOrdinal("Level")), reader.GetInt32(reader.GetOrdinal("Mode")), reader.GetString(reader.GetOrdinal("Location")));
                         }
                     }
                 }
@@ -146,7 +146,16 @@ namespace PuzzleGame
 
     class Miniature
     {
-       
+        public int IdImage { get; set; }
+        public string ImageName { get; set; }
+        public string Picture { get; set; }
+
+        public Miniature(int id, string name, string pic)
+        {
+            IdImage = id;
+            ImageName = name;
+            Picture = pic;
+        }
     }
 }
 
