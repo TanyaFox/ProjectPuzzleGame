@@ -43,7 +43,35 @@ namespace PuzzleGame.Models
 
         }
 
-        //public IField CreateNewGame()
+        public IField CreateNewGame(int dif, int type, List<byte[]> imagePieces)
+        {
+            int size;
+            switch (dif)
+            {
+                case 1:
+                    size = 9;
+                    break;
+                case 2:
+                    size = 20;
+                    break;
+                case 3:
+                    size = 36;
+                    break;
+                default:
+                    throw new ArgumentException();
+            }
+
+            if (type == 1)
+            {
+                return new Field1(size, imagePieces);
+            }
+            else if (type == 2)
+            {
+                return new Field2(size, imagePieces);
+            }
+            else
+                throw new ArgumentException();
+        }
 
     }
 }
