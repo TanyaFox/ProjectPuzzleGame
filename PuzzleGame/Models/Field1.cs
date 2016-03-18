@@ -10,18 +10,46 @@ namespace PuzzleGame.Models
     class Field1 : IField//Пятнашки
     {
         public List<Cell> ListCell { get; set; }
+        public List<byte[]> ImagePieces { get; set; }
 
-        public Field1(List<int> rnd)
+        public Field1(int cells, List<byte[]> imagePieces)
         {
-            List<Cell> Templist = new List<Cell>();
-            for (int i = 1; i <= rnd.Count; i++)
+            this.ImagePieces = imagePieces;
+            List<int> rndList = new List<int>();
+            Random rn = new Random();
+            for (int i = 1; i <= cells; i++)
             {
-                Templist.Add(new Cell(rnd[i]));
+                rndList.Add(i);
+            }
+            for (int i = 1; i <= rndList.Count; i++)
+            {
+                int tmp = rndList[0];
+                rndList.RemoveAt(0);
+                rndList.Insert(rn.Next(rndList.Count), tmp);
+            }
+
+            List<Cell> Templist = new List<Cell>();
+            for (int i = 1; i <= rndList.Count; i++)
+            {
+                Templist.Add(new Cell(rndList[i], ImagePieces[rndList[i]]));
                 if (Templist[i].CurrentElement == i)
                     Templist[i].IsCorrect = true;
             }
             this.ListCell = Templist;
         }
+
+        public Field1(List<int> LoadedState, List<byte[]> imagePieces)
+        {
+            this.ImagePieces = imagePieces;
+            List<Cell> Templist = new List<Cell>();
+            for (int i = 1; i <= LoadedState.Count; i++)
+            {
+                Templist.Add(new Cell(LoadedState[i], ImagePieces[LoadedState[i]]));
+                if (Templist[i].CurrentElement == i)
+                    Templist[i].IsCorrect = true;
+            }
+        }
+
 
         public void CellChange(int first, int second)
         {

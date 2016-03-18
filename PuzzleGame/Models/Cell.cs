@@ -10,16 +10,19 @@ namespace PuzzleGame.Models
     {
         public bool IsCorrect { get; set; }
         public int CurrentElement { get; set; }
+        public byte[] Image { get; set; }
 
-        public Cell(int current)
+        public Cell(int current, byte[] image)
         {
             IsCorrect = false;
             CurrentElement = current;
+            Image = image;
         }
         public Cell()
         {
             IsCorrect = false;
             CurrentElement = 0;
+            Image = null;
         }
     }
 }

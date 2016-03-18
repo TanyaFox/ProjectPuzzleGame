@@ -9,10 +9,10 @@ namespace PuzzleGame.Models
 {
     class Field2 : IField //Drag'n'drop
     {
-        public List<Cell> ListCell
-        { get; set; }
+        public List<Cell> ListCell{ get; set; }
+        public List<byte[]> ImagePieces { get; set; }
 
-        public Field2(int cells)
+        public Field2(int cells, List<byte[]> imagePieces)
         {
             List<Cell> Templist = new List<Cell>();
             for (int i = 1; i <= cells; i++)
@@ -20,14 +20,16 @@ namespace PuzzleGame.Models
                 Templist.Add(new Cell());
             }
             this.ListCell = Templist;
+            this.ImagePieces = imagePieces;
         }
 
-        public Field2(List<int> CurrentState)
+        public Field2(List<int> CurrentState, List<byte[]> imagePieces)
         {
+            this.ImagePieces = imagePieces;
             List<Cell> Templist = new List<Cell>();
             foreach (int i in CurrentState)
             {
-                Templist.Add(new Cell(i));
+                Templist.Add(new Cell(i, null));
             }
             this.ListCell = Templist;
         }

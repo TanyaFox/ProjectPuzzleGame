@@ -10,6 +10,7 @@ namespace PuzzleGame.Interface
     interface IField
     {
         List<Cell> ListCell { get; }
+        List<byte[]> ImagePieces { get; set; }
         void CellChange(int first, int second);
     }
 }
