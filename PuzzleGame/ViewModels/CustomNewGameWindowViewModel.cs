@@ -8,6 +8,10 @@ using System.Windows.Input;
 using PuzzleGame.Interface;
 using PuzzleGame.Views;
 using PuzzleGame.Models;
+using Microsoft.Win32;
+using System.Windows;
+using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace PuzzleGame.ViewModels
 {
@@ -107,6 +111,7 @@ namespace PuzzleGame.ViewModels
         }
 
         PuzzleMethods pz = new PuzzleMethods();
+        DataBase db = new DataBase();
 
         public CustomNewGameWindowViewModel()
         {
@@ -115,7 +120,7 @@ namespace PuzzleGame.ViewModels
             _levelDifficulty = pz.DefineDifficultyLevels();
 
             ButtonPlayCommand = new Command(arg => ButtonPlayClick());
-            ButtonUploadPictureCommand = new Command(arg => ButtonDownloadPictureClick());
+            ButtonUploadPictureCommand = new Command(arg => ButtonUploadPictureClick());
 
         }
 
@@ -129,9 +134,31 @@ namespace PuzzleGame.ViewModels
             _navigationService.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty])); //Here should be put the name from user's setting (from form)
         }
 
-        private void ButtonDownloadPictureClick()
+        private void ButtonUploadPictureClick()
         {
-            //Here should be logic for 
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Pictures|*.jpeg;*.gif;*.png;*.jpeg";
+            dialog.InitialDirectory = Environment.CurrentDirectory;
+            Stream st = null;
+            if (dialog.ShowDialog() == null)
+            {
+                try
+                {
+                    if ((st = dialog.OpenFile()) != null)
+                    {
+                        using (st)
+                        {
+                            //int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);//Waiting for changes in the AddPicture method.
+                            //BitmapFrame bi = BitmapFrame.Create(st);
+                            //pz.SendFragments(NewPictureId, bi);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PuzzleGame;
+using System.Windows.Media.Imaging;
 
 namespace PuzzleGame.Models
 {
@@ -105,5 +106,13 @@ namespace PuzzleGame.Models
             return mode + def.ToString();
         }
 
+        public void SendFragments(int id, BitmapImage pic)
+        {
+            int heigth = pic.PixelHeight;
+            int width = pic.PixelWidth;
+
+            
+
+        }
     }
 }
