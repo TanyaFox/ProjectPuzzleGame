@@ -50,8 +50,8 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private bool _listOfPictures; //Type should be changed after Igor will add special class for list of miniatures
-        public bool ListOfPictures
+        private List<Miniature> _listOfPictures; //Type should be changed after Igor will add special class for list of miniatures
+        public List<Miniature> ListOfPictures
         {
             get
             {
@@ -64,8 +64,8 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private bool _selectedImage; //Type should be changed after Igor will add special class for list of miniatures
-        public bool SelectedImage
+        private Miniature _selectedImage; //Type should be changed after Igor will add special class for list of miniatures
+        public Miniature SelectedImage
         {
             get
             {
@@ -107,12 +107,14 @@ namespace PuzzleGame.ViewModels
         }
 
         PuzzleMethods pz = new PuzzleMethods();
+        DataBase db = new DataBase();
 
         public NewGameWindowViewModel()
         {
             //_navigationService = new NavigationService();
             _gameMode = pz.DefineGameModes();
             _levelDifficulty = pz.DefineDifficultyLevels();
+            _listOfPictures = db.LoadMiniatures();
             ButtonPlayCommand = new Command(arg => ButtonPlayClick());
       
         }
