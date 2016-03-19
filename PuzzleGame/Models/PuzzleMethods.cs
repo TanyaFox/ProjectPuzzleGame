@@ -7,11 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using PuzzleGame;
 using System.Windows.Media.Imaging;
+using System.Drawing;
+using System.Windows;
 
 namespace PuzzleGame.Models
 {
     class PuzzleMethods
     {
+        DataBase db = new DataBase();
+
         public IField LoadSave(Game savedGame)
         {
             List<byte[]> LoadedImagePieces = new List<byte[]>();
@@ -106,12 +110,41 @@ namespace PuzzleGame.Models
             return mode + def.ToString();
         }
 
-        public void SendFragments(int id, BitmapImage pic)
+        public void InitiateFragmentation(int id, BitmapImage pic)
         {
             int heigth = pic.PixelHeight;
             int width = pic.PixelWidth;
+            SendFragments(1, id, 3, 3, pic, width, heigth);
+            SendFragments(1, id, 4, 5, pic, width, heigth);
+            SendFragments(1, id, 6, 6, pic, width, heigth);
+        }
 
-            
+        private void SendFragments(int dif, int id, int x, int y, BitmapImage pic, int width, int heigth)
+        {
+            BitmapEncoder be = new JpegBitmapEncoder();
+            int h = heigth / x;
+            int w = width / y;
+            for (int i = 0; i < x; i++)
+                for (int j = 0; j < y; j++)
+                {
+                    byte[] outBytes = null;
+                    var bs = new CroppedBitmap(pic, new Int32Rect(j * w, i * h, w, h)) as BitmapSource;
+
+                    if (bs != null)
+                    {
+                        be.Frames.Add(BitmapFrame.Create(bs));
+
+                        using (var ms = new MemoryStream())
+                        {
+                            be.Save(ms);
+                            outBytes = ms.ToArray();
+                            db.AddPartsOfPicture(id, outBytes, dif, i * x + j + 1);
+                        }
+                    }
+                    else
+                        throw new ArgumentException();
+                }
+                  
 
         }
     }
