@@ -43,8 +43,15 @@ namespace PuzzleGame.Models
 
         }
 
-        public IField CreateNewGame(int dif, int type, List<byte[]> imagePieces)
+        public IField CreateNewGame(int dif, int type, Dictionary<string, MemoryStream> ImagePieces)
         {
+            List<byte[]> LoadedImagePieces = new List<byte[]>();
+
+            for (int i = 1; i <= ImagePieces.Count; i++)
+            {
+                LoadedImagePieces.Add(ImagePieces[i.ToString()].ToArray());
+            }
+
             int size;
             switch (dif)
             {
@@ -63,11 +70,11 @@ namespace PuzzleGame.Models
 
             if (type == 1)
             {
-                return new Field1(size, imagePieces);
+                return new Field1(size, LoadedImagePieces);
             }
             else if (type == 2)
             {
-                return new Field2(size, imagePieces);
+                return new Field2(size, LoadedImagePieces);
             }
             else
                 throw new ArgumentException();
