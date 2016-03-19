@@ -20,8 +20,8 @@
         <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 5 20 5" FontSize="30" FontFamily="Comic Sans MS Bold">Уровень сложности:</TextBlock>
         <TextBlock Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="20 5 20 20" FontSize="30" FontFamily="Comic Sans MS Bold">Загрузи свою картинку:</TextBlock>
 
-        <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="40" Margin="5 20 20 5" FontSize="26" FontFamily="Comic Sans MS" Background="Bisque" ItemsSource="{Binding GameMode.Values}" SelectedItem="{Binding Mode}"></ComboBox>
-        <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="40" Margin="5 20 20 5" FontSize="26" FontFamily="Comic Sans MS" Background="Bisque" ItemsSource="{Binding LevelDifficulty.Values}" SelectedItem="{Binding Difficulty}"></ComboBox>
+        <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="40" Margin="5 20 20 5" FontSize="26" FontFamily="Comic Sans MS" Background="Bisque" ItemsSource="{Binding GameMode.Keys}" SelectedItem="{Binding Mode}"></ComboBox>
+        <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="40" Margin="5 20 20 5" FontSize="26" FontFamily="Comic Sans MS" Background="Bisque" ItemsSource="{Binding LevelDifficulty.Keys}" SelectedItem="{Binding Difficulty}"></ComboBox>
 
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="15">
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="200" Margin="10" FontSize="26" FontFamily="Comic Sans MS Bold" Background="Bisque" Command="{Binding ButtonUploadPictureCommand}">Загрузить</Button>

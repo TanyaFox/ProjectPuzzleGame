@@ -35,8 +35,8 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private Dictionary<int, string> _levelDifficulty;
-        public Dictionary<int, string> LevelDifficulty
+        private Dictionary<string, string> _levelDifficulty;
+        public Dictionary<string, string> LevelDifficulty
         {
             get
             {
@@ -109,13 +109,13 @@ namespace PuzzleGame.ViewModels
         {
             //_navigationService = new NavigationService();
             _gameMode = new Dictionary<string, string>(); //Maybe, these should be implemented somewhere else, special class?
-            GameMode["Tag"] = "Пятнашки";
-            GameMode["Drag&Drop"] = "Кусочки";
+            GameMode["Пятнашки"] = "Tag";
+            GameMode["Кусочки"] = "Drag&Drop";
 
-            _levelDifficulty = new Dictionary<int, string>();
-            LevelDifficulty[1] = "Легко";
-            LevelDifficulty[2] = "Средне";
-            LevelDifficulty[3] = "Сложно";
+            _levelDifficulty = new Dictionary<string, string>();
+            LevelDifficulty["Легко"] = "1";
+            LevelDifficulty["Средне"] = "2";
+            LevelDifficulty["Сложно"] = "3";
 
             ButtonPlayCommand = new Command(arg => ButtonPlayClick());
             ButtonUploadPictureCommand = new Command(arg => ButtonDownloadPictureClick());
