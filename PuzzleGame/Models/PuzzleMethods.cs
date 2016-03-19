@@ -17,7 +17,7 @@ namespace PuzzleGame.Models
             DataBase db = new DataBase();
             Dictionary<string, MemoryStream> LoadedImageDic = db.LoadPuzzle(savedGame.ImageID, savedGame.Difficulty);
             
-            var parts = savedGame.PartsLocation.Split();
+            var parts = savedGame.PartsLocation.Split(',');
             List<int> LoadedState = new List<int>();
 
             for (int i = 1; i <= LoadedState.Count; i++ )
