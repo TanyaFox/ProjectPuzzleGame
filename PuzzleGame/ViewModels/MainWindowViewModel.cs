@@ -22,27 +22,11 @@ namespace PuzzleGame.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
-        //private bool _flag;
-        //public bool Flag
-        //{
-        //    get
-        //    {
-        //        return _flag;
-        //    }
-        //    set
-        //    {
-        //        _flag = value;
-        //        OnPropertyChanged("Flag");
-        //    }
-        //}
-
         public MainWindowViewModel()
         {
-            //_navigationService = new NavigationService();
             ButtonNewGameCommand = new Command(arg => ButtonNewGameClick());
             ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
             ButtonAuthorsCommand = new Command(arg => ButtonAuthorsClick());
-            //ButtonExitCommand = new Command(arg => ButtonExitClick());
         }
 
         public ICommand ButtonNewGameCommand { get; set; }
@@ -58,7 +42,7 @@ namespace PuzzleGame.ViewModels
         private void ButtonSavedGameClick()
         {
             //Logic for receiving data about the last saved game from DB
-
+            _navigationService = new NavigationService();
             string keyForWindowCreating = "Tag1"; //Here should be key from DB
             switch (keyForWindowCreating)
             {
@@ -90,17 +74,8 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonAuthorsClick()
         {
+            _navigationService = new NavigationService();
             _navigationService.NavigateTo("AboutWindow");
         }
-
-        //public ICommand ButtonExitCommand { get; set; }
-
-        //private void ButtonExitClick()
-        //{
-        //    Flag = true;
-        //    CloseAction(Flag);
-        //}
-
-        //public Action<bool> CloseAction { get; set; }
     }
 }

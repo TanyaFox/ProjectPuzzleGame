@@ -31,7 +31,6 @@ namespace PuzzleGame.ViewModels
 
         public BeforeNewGameWindowViewModel()
         {
-            //_navigation = new NavigationServiceForSettings();
             ButtonFromDBCommand = new Command(arg => ButtonFromDBClick());
             ButtonUploadCommand = new Command(arg => ButtonUploadClick());
         }

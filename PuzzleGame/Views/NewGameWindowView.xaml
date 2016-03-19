@@ -35,7 +35,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding ImageName}"/>
-                            <Image Grid.Row="0" Grid.Column="1" Height="180" Width="240" Margin="10 10 5 10" Source="{Binding Image}"/>
+                            <Image Grid.Row="0" Grid.Column="1" Height="180" Width="240" Margin="10 10 5 10" Source="{Binding Picture}"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

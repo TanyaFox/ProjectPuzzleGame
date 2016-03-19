@@ -50,7 +50,7 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private List<Miniature> _listOfPictures; //Type should be changed after Igor will add special class for list of miniatures
+        private List<Miniature> _listOfPictures;
         public List<Miniature> ListOfPictures
         {
             get
@@ -64,7 +64,7 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private Miniature _selectedImage; //Type should be changed after Igor will add special class for list of miniatures
+        private Miniature _selectedImage;
         public Miniature SelectedImage
         {
             get
@@ -111,7 +111,6 @@ namespace PuzzleGame.ViewModels
 
         public NewGameWindowViewModel()
         {
-            //_navigationService = new NavigationService();
             _gameMode = pz.DefineGameModes();
             _levelDifficulty = pz.DefineDifficultyLevels();
             _listOfPictures = db.LoadMiniatures();
@@ -124,7 +123,7 @@ namespace PuzzleGame.ViewModels
         private void ButtonPlayClick()
         {
             _navigationService = new NavigationService();
-            _navigationService.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]));  //Here should be put the name from user's setting (from form)
+            _navigationService.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]));
         }
     }
 }
