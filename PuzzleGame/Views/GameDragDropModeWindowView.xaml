@@ -1,7 +1,7 @@
 ﻿<Window x:Class="PuzzleGame.Views.GameDragDropModeWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Собери паззл! Уровень: легко" Height="920" Width="1300">
+        Title="Собери паззл! Уровень: легко" Height="920" Width="1300" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
