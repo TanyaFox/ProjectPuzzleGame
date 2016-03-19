@@ -115,7 +115,6 @@ namespace PuzzleGame.ViewModels
 
         public CustomNewGameWindowViewModel()
         {
-            //_navigationService = new NavigationService();
             _gameMode = pz.DefineGameModes();
             _levelDifficulty = pz.DefineDifficultyLevels();
 
@@ -136,6 +135,7 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonUploadPictureClick()
         {
+            //These all should be in parallel task
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Pictures|*.jpeg;*.gif;*.png;*.jpeg";
             dialog.InitialDirectory = Environment.CurrentDirectory;

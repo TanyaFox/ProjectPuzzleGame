@@ -22,8 +22,8 @@ namespace PuzzleGame.ViewModels
 
         private INavigationService _navigationService;
 
-        private Dictionary<string,string> _gameMode;
-        public Dictionary<string,string> GameMode
+        private Dictionary<string, string> _gameMode;
+        public Dictionary<string, string> GameMode
         {
             get
             {
@@ -113,15 +113,16 @@ namespace PuzzleGame.ViewModels
         {
             _gameMode = pz.DefineGameModes();
             _levelDifficulty = pz.DefineDifficultyLevels();
-            _listOfPictures = db.LoadMiniatures();
+            _listOfPictures = db.LoadMiniatures(); //this should be in parallel task in order to prevent UI from blocking
             ButtonPlayCommand = new Command(arg => ButtonPlayClick());
-      
+
         }
 
         public ICommand ButtonPlayCommand { get; set; }
 
         private void ButtonPlayClick()
         {
+            //Here should be some logic for image transfer into the gameWindow
             _navigationService = new NavigationService();
             _navigationService.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]));
         }
