@@ -28,7 +28,12 @@ namespace PuzzleGame
                         {
                             for (int i = 0; i < reader.FieldCount; i = i + 3)
                             {
-                                Miniatures.Add(new Miniature(reader.GetInt32(i), reader.GetString(i + 1), reader.GetString(i+2)));
+                                
+                                int bLength = (int)reader.GetBytes(2, i, null, 0, int.MaxValue);
+                                byte[] bBuffer = new byte[bLength];
+                                reader.GetBytes(2, i, bBuffer, 0, bLength);
+                                MemoryStream mStream = new MemoryStream(bBuffer);
+                                Miniatures.Add(new Miniature(reader.GetInt32(i), reader.GetString(i + 1), mStream.ToArray()));
                             }
                         }
                     }

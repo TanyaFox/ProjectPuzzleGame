@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,11 @@ namespace PuzzleGame.Models
         public string ImageName { get; set; }
         public byte[] Picture { get; set; }
 
-        public Miniature(int id, string name, string pic)
+        public Miniature(int id, string name, byte[] pic)
         {
             IdImage = id;
             ImageName = name;
-            Picture = Encoding.UTF8.GetBytes(pic);
+            Picture = pic;
         }
     }
 }

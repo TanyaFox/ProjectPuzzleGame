@@ -22,7 +22,7 @@ namespace PuzzleGame.Models
 
             for (int i = 1; i <= LoadedState.Count; i++ )
             {
-                LoadedImagePieces.Add(LoadedImageDic[i.ToString()].GetBuffer());
+                LoadedImagePieces.Add(LoadedImageDic[i.ToString()].ToArray());
             }
 
             foreach (string st in parts)
