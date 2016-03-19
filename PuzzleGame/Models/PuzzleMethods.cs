@@ -115,8 +115,8 @@ namespace PuzzleGame.Models
             int heigth = pic.PixelHeight;
             int width = pic.PixelWidth;
             SendFragments(1, id, 3, 3, pic, width, heigth);
-            SendFragments(1, id, 4, 5, pic, width, heigth);
-            SendFragments(1, id, 6, 6, pic, width, heigth);
+            SendFragments(2, id, 4, 5, pic, width, heigth);
+            SendFragments(3, id, 6, 6, pic, width, heigth);
         }
 
         private void SendFragments(int dif, int id, int x, int y, BitmapImage pic, int width, int heigth)
