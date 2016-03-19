@@ -12,7 +12,7 @@ namespace PuzzleGame
 {
     class DataBase
     {
-        public string conString = "";
+        public string conString = "Data Source=localhost;Initial Catalog=Pazzle;Integrated Security=True";
 
         public List<Miniature> LoadMiniatures()
         {

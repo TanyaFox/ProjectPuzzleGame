@@ -10,13 +10,13 @@ namespace PuzzleGame.Models
     {
         public int IdImage { get; set; }
         public string ImageName { get; set; }
-        public string Picture { get; set; }
+        public byte[] Picture { get; set; }
 
         public Miniature(int id, string name, string pic)
         {
             IdImage = id;
             ImageName = name;
-            Picture = pic;
+            Picture = Encoding.UTF8.GetBytes(pic);
         }
     }
 }
