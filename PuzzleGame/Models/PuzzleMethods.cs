@@ -9,7 +9,7 @@ using PuzzleGame;
 
 namespace PuzzleGame.Models
 {
-    class Methods
+    class PuzzleMethods
     {
         public IField LoadSave(Game savedGame)
         {
@@ -71,6 +71,31 @@ namespace PuzzleGame.Models
             }
             else
                 throw new ArgumentException();
+        }
+
+        public Dictionary<string, string> DefineGameModes()
+        {
+            Dictionary<string, string> gameMode = new Dictionary<string, string>();
+            gameMode["Tag"] = "Пятнашки";
+            gameMode["Drag&Drop"] = "Кусочки";
+
+            return gameMode;
+        }
+
+        public Dictionary<int, string> DefineDifficultyLevels()
+        {
+
+            Dictionary<int, string> levelDifficulty = new Dictionary<int, string>();
+            levelDifficulty[1] = "Легко";
+            levelDifficulty[2] = "Средне";
+            levelDifficulty[3] = "Сложно";
+
+            return levelDifficulty;
+        }
+
+        public string FormMode(int def, string mode)
+        {
+            return mode + def.ToString();
         }
 
     }
