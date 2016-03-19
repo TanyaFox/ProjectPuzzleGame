@@ -76,24 +76,24 @@ namespace PuzzleGame.Models
         public Dictionary<string, string> DefineGameModes()
         {
             Dictionary<string, string> gameMode = new Dictionary<string, string>();
-            gameMode["Tag"] = "Пятнашки";
-            gameMode["Drag&Drop"] = "Кусочки";
+            gameMode["Пятнашки"] = "Tag";
+            gameMode["Кусочки"] = "Drag&Drop";
 
             return gameMode;
         }
 
-        public Dictionary<int, string> DefineDifficultyLevels()
+        public Dictionary<string, string> DefineDifficultyLevels()
         {
 
-            Dictionary<int, string> levelDifficulty = new Dictionary<int, string>();
-            levelDifficulty[1] = "Легко";
-            levelDifficulty[2] = "Средне";
-            levelDifficulty[3] = "Сложно";
+            Dictionary<string, string> levelDifficulty = new Dictionary<string, string>();
+            levelDifficulty["Легко"] = "1";
+            levelDifficulty["Средне"] = "2";
+            levelDifficulty["Сложно"] = "3";
 
             return levelDifficulty;
         }
 
-        public string FormMode(int def, string mode)
+        public string FormMode(string def, string mode)
         {
             return mode + def.ToString();
         }

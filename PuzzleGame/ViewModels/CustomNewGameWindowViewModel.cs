@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using PuzzleGame.Interface;
 using PuzzleGame.Views;
+using PuzzleGame.Models;
 
 namespace PuzzleGame.ViewModels
 {
@@ -105,17 +106,13 @@ namespace PuzzleGame.ViewModels
             }
         }
 
+        PuzzleMethods pz = new PuzzleMethods();
+
         public CustomNewGameWindowViewModel()
         {
             //_navigationService = new NavigationService();
-            _gameMode = new Dictionary<string, string>(); //Maybe, these should be implemented somewhere else, special class?
-            GameMode["Пятнашки"] = "Tag";
-            GameMode["Кусочки"] = "Drag&Drop";
-
-            _levelDifficulty = new Dictionary<string, string>();
-            LevelDifficulty["Легко"] = "1";
-            LevelDifficulty["Средне"] = "2";
-            LevelDifficulty["Сложно"] = "3";
+            _gameMode = pz.DefineGameModes();
+            _levelDifficulty = pz.DefineDifficultyLevels();
 
             ButtonPlayCommand = new Command(arg => ButtonPlayClick());
             ButtonUploadPictureCommand = new Command(arg => ButtonDownloadPictureClick());
@@ -128,9 +125,8 @@ namespace PuzzleGame.ViewModels
         private void ButtonPlayClick()
         {
             _navigationService = new NavigationService();
-            //Here should be logic of forming a string from Mode and Difficulty
-            //An example of string, that should be put: "Tag" + "&" + "2"
-            _navigationService.NavigateTo("Tag1"); //Here should be put the name from user's setting (from form)
+
+            _navigationService.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty])); //Here should be put the name from user's setting (from form)
         }
 
         private void ButtonDownloadPictureClick()
