@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="60" FontSize="36" FontFamily="Comic Sans MS Bold"> Выбери параметры игры:</TextBlock>
@@ -19,10 +19,10 @@
         <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20 5 20 5" FontSize="30" FontFamily="Comic Sans MS Bold">Уровень сложности:</TextBlock>
         <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="20 5 20 20" FontSize="30" FontFamily="Comic Sans MS Bold">Картинка:</TextBlock>
 
-        <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="40" Margin="5 20 20 5" FontSize="26" FontFamily="Comic Sans MS" Background="Bisque" ItemsSource="{Binding GameMode.Values}" SelectedItem="{Binding Mode}"></ComboBox>
-        <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="40" Margin="5 20 20 5" FontSize="26" FontFamily="Comic Sans MS" Background="Bisque" ItemsSource="{Binding LevelDifficulty.Values}" SelectedItem="{Binding Difficulty}"></ComboBox>
+        <ComboBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="40" Margin="5 20 20 5" FontSize="26" FontFamily="Comic Sans MS" Background="Bisque" ItemsSource="{Binding GameMode.Keys}" SelectedItem="{Binding Mode}"></ComboBox>
+        <ComboBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="40" Margin="5 20 20 5" FontSize="26" FontFamily="Comic Sans MS" Background="Bisque" ItemsSource="{Binding LevelDifficulty.Keys}" SelectedItem="{Binding Difficulty}"></ComboBox>
         
-        <ListBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Height="200" Margin="5 20 20 5" ItemsSource="{Binding ListOfPictures}" SelectedItem="{Binding SelectedImage}">
+        <ListBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="550" Height="200" Margin="5 20 20 5" ItemsSource="{Binding ListOfPictures}" SelectedItem="{Binding SelectedImage}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border Margin="15" BorderThickness="2" BorderBrush="SteelBlue" CornerRadius="4" Width="Auto">
