@@ -128,7 +128,6 @@ namespace PuzzleGame
 
         public void AddPartsOfPicture(int ImageId, byte[] imageBytes, int Difficulty, int PartLocation)
         {
-
             using (SqlConnection connection = new SqlConnection(conString))
             {
                 var cmd = new SqlCommand("ДобавлениеЧасти", connection);
