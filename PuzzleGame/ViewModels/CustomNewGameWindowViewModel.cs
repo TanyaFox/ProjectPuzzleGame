@@ -151,7 +151,7 @@ namespace PuzzleGame.ViewModels
 
         private async void ButtonUploadPictureClick()
         {
-            Flag = true;
+            Flag = false;
             ProgressLabel = "Загружаем картинку..";
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Pictures|*.jpg;*.jpeg";
