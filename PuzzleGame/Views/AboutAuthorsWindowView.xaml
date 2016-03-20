@@ -9,7 +9,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS" Margin="20 10 20 10">Игру "Puzzle Workd!" для вас склепали:</TextBlock>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS" Margin="20 10 20 10">Игру "Puzzle World!" для вас склепали:</TextBlock>
         <TextBlock Grid.Row="1" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS" Margin="20 10 20 10">Репецкая Татьяна</TextBlock>
         <TextBlock Grid.Row="2" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS" Margin="20 10 20 10">Рязанов Игорь</TextBlock>
         <TextBlock Grid.Row="3" HorizontalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS" Margin="20 10 20 10">Позднышева Софья</TextBlock>
