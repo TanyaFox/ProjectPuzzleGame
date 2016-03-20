@@ -147,5 +147,9 @@ namespace PuzzleGame.Models
                   
 
         }
+        public void GetNewGamePicture(int a)
+        {
+            CreateNewGame(1, 1, db.LoadPuzzle(a, 1));
+        }
     }
 }

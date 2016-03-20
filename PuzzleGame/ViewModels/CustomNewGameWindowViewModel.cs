@@ -18,6 +18,7 @@ namespace PuzzleGame.ViewModels
     class CustomNewGameWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public event Action<int> ImageSelected;
         private void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -128,6 +129,7 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonPlayClick()
         {
+
             _navigationService = new NavigationService();
 
             _navigationService.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty])); //Here should be put the name from user's setting (from form)
@@ -150,6 +152,8 @@ namespace PuzzleGame.ViewModels
                         {
                             int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
                             BitmapFrame bi = BitmapFrame.Create(st);
+                            if (ImageSelected != null)
+                                ImageSelected(NewPictureId);
                             pz.InitiateFragmentation(NewPictureId, bi);
                         }
                     }
