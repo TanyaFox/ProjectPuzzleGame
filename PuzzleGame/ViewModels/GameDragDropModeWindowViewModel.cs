@@ -76,6 +76,20 @@ namespace PuzzleGame.ViewModels
             }
         }
 
+        private List<byte[]> _selectedPart;
+        public List<byte[]> SelectedPart
+        {
+            get
+            {
+                return _selectedPart;
+            }
+            set
+            {
+                _selectedPart = value;
+                OnPropertyChanged("SelectedPart");
+            }
+        }
+
 
         public GameDragDropModeWindowViewModel(int id, int level)
         {
