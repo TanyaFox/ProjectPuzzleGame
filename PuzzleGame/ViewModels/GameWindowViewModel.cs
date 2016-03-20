@@ -86,6 +86,16 @@ namespace PuzzleGame.ViewModels
             CallPopulateMethod();      
         }
 
+        public GameWindowViewModel(int id, int level, IField field)
+        {
+            Id = id;
+            Level = level;
+            _changingCell = -1;
+            ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
+            ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
+            CallPopulateMethod();
+        }
+
         public ICommand ButtonPressedCommand { get; set; }
 
         private void ButtonPressedClick(object bNumber)

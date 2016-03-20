@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PuzzleGame.Interface;
 using PuzzleGame.ViewModels;
 
 namespace PuzzleGame.Views
@@ -24,6 +25,13 @@ namespace PuzzleGame.Views
         {
             InitializeComponent();
             GameWindowViewModel vm = new GameWindowViewModel(id, level);
+            this.DataContext = vm;
+        }
+
+        public GameWindowView(int id, int level, IField field)
+        {
+            InitializeComponent();
+            GameWindowViewModel vm = new GameWindowViewModel(id, level, field);
             this.DataContext = vm;
         }
     }

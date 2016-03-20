@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleGame.Interface
 {
-    interface IField
+    public interface IField
     {
         List<Cell> ListCell { get; }
         List<byte[]> ImagePieces { get; set; }

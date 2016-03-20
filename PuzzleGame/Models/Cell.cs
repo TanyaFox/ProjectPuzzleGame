@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleGame.Models
 {
-    class Cell
+    public class Cell
     {
         public bool IsNotCorrect { get; set; }
         public int CurrentElement { get; set; }

@@ -21,14 +21,12 @@ namespace PuzzleGame.ViewModels
         int Id;
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public event Action<int> ImageSelected;
         private void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
-        private INavigationService _navigationService;
         private INavigationServiceGames _navigationServiceForGames;
 
         private Dictionary<string,string> _gameMode;
@@ -87,8 +85,8 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private string _flag;
-        public string Flag
+        private bool _flag;
+        public bool Flag
         {
             get
             {
@@ -141,7 +139,8 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonUploadPictureClick()
         {
-            //These all should be in parallel task
+            Flag = true;
+            ProgressLabel = "Загружаем картинку..";
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Pictures|*.jpg;*.jpeg";
             dialog.InitialDirectory = Environment.CurrentDirectory;
@@ -155,12 +154,15 @@ namespace PuzzleGame.ViewModels
                     BitmapImage bi = pz.BitmapToImageSource(bm);
                     Id = NewPictureId;
                     pz.InitiateFragmentation(NewPictureId, bi);
+                    Flag = false; //here should be Flag = wait метод от 5 строк выше
+            ProgressLabel = "Готово!";
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
+            
         }
 
     }

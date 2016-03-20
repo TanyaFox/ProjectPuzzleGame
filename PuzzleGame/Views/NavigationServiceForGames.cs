@@ -38,5 +38,28 @@ namespace PuzzleGame.Views
                 MessageBox.Show("Ошибка! Возможно, ты не верно выбрал параметры игры.");
             }
         }
+
+        public void NavigateTo(string windowName, int id, int level, IField field)
+        {
+            Window windowObj;
+            _windows = new Dictionary<string, Window>()
+            { 
+                {"Tag1", new GameWindowView(id, level, field)},
+                {"Tag2", new GameMiddleWindowView(id, level, field)},
+                {"Tag3", new GameHardWindowView(id, level, field)},
+                {"Drag&Drop1", new GameDragDropModeWindowView()},
+                {"Drag&Drop2", new GameDragDropModeMiddleWindowView()},
+                {"Drag&Drop3", new GameDragDropModeHardWindowView()}
+            };
+
+            if (_windows.TryGetValue(windowName, out windowObj))
+            {
+                windowObj.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка! Возможно, ты не верно выбрал параметры игры.");
+            }
+        }
     }
 }
