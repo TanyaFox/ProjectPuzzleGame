@@ -8,5 +8,9 @@ namespace PuzzleGame.ViewModels
 {
     class GameHardWindowViewModel
     {
+        public GameHardWindowViewModel(int id)
+        {
+
+        }
     }
 }

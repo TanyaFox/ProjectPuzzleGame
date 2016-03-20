@@ -10,15 +10,7 @@ namespace PuzzleGame.Views
 {
     public class NavigationServiceForGames : INavigationServiceGames
     {
-        Dictionary<string, Window> _windows; //= new Dictionary<string, Window>() 
-        //{ 
-        //    {"Tag1", new GameWindowView()},
-        //    {"Tag2", new GameMiddleWindowView()},
-        //    {"Tag3", new GameHardWindowView()},
-        //    {"Drag&Drop1", new GameDragDropModeWindowView()},
-        //    {"Drag&Drop2", new GameDragDropModeMiddleWindowView()},
-        //    {"Drag&Drop3", new GameDragDropModeHardWindowView()}
-        //};
+        Dictionary<string, Window> _windows;
 
         public NavigationServiceForGames()
         {
@@ -29,11 +21,11 @@ namespace PuzzleGame.Views
             Window windowObj;
             _windows = new Dictionary<string, Window>()
             { 
-            {"Tag1", new GameWindowView(id)},
-            {"Tag2", new GameMiddleWindowView()},
-            {"Tag3", new GameHardWindowView()},
-            {"Drag&Drop1", new GameDragDropModeWindowView()},
-            {"Drag&Drop2", new GameDragDropModeMiddleWindowView()},
+                {"Tag1", new GameWindowView(id)},
+                {"Tag2", new GameMiddleWindowView(id)},
+                {"Tag3", new GameHardWindowView(id)},
+                {"Drag&Drop1", new GameDragDropModeWindowView()},
+                {"Drag&Drop2", new GameDragDropModeMiddleWindowView()},
                 {"Drag&Drop3", new GameDragDropModeHardWindowView()}
             };
 
@@ -43,7 +35,7 @@ namespace PuzzleGame.Views
             }
             else
             {
-                MessageBox.Show("Ошибка!");
+                MessageBox.Show("Ошибка! Возможно, ты не верно выбрал параметры игры.");
             }
         }
     }
