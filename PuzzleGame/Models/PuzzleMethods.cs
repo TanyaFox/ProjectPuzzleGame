@@ -24,14 +24,13 @@ namespace PuzzleGame.Models
             var parts = savedGame.PartsLocation.Split(',');
             List<int> LoadedState = new List<int>();
 
-            for (int i = 1; i <= LoadedState.Count; i++ )
-            {
-                LoadedImagePieces.Add(LoadedImageDic[i.ToString()].ToArray());
-            }
-
             foreach (string st in parts)
             {
                 LoadedState.Add(int.Parse(st));
+            }
+            for (int i = 1; i <= LoadedState.Count; i++)
+            {
+                LoadedImagePieces.Add(LoadedImageDic[i.ToString()].ToArray());
             }
 
             if (savedGame.Type == 1)
