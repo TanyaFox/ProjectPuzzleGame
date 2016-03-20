@@ -127,6 +127,19 @@ namespace PuzzleGame.ViewModels
                         _isAllow.Add(_field.ListCell[i].IsNotCorrect);
                     }
                 }
+                Random rn = new Random();
+                List<int> rndList = new List<int>();
+                for (int i = 0; i < rndList.Count; i++)
+                {
+                    int tmp = rndList[0];
+                    rndList.RemoveAt(0);
+                    rndList.Insert(rn.Next(rndList.Count), tmp);
+                }
+
+                foreach (int i in rndList)
+                {
+                    _listOfParts.Add(new Part(_field.ImagePieces[i], i));
+                }
             }
             catch(Exception e)
             {

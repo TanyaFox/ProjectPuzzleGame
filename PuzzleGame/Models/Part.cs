@@ -24,6 +24,11 @@ namespace PuzzleGame.Models
             set { _trueNumber = value; }
         }
         
+        public Part(byte[] img, int cnt)
+        {
+            Piece = img;
+            TrueNumber = cnt;
+        }
         
     }
 }
