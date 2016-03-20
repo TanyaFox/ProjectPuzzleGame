@@ -12,6 +12,7 @@ using Microsoft.Win32;
 using System.Windows;
 using System.IO;
 using System.Windows.Media.Imaging;
+using System.Drawing;
 
 namespace PuzzleGame.ViewModels
 {
@@ -141,20 +142,17 @@ namespace PuzzleGame.ViewModels
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Pictures|*.jpg;*.jpeg";
             dialog.InitialDirectory = Environment.CurrentDirectory;
-            Stream st = null;
             if (dialog.ShowDialog() != null)
             {
                 try
                 {
 
-                    using (st)
-                    {
-                        int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
-                        BitmapFrame bi = BitmapFrame.Create(st);
-                        if (ImageSelected != null)
-                            ImageSelected(NewPictureId);
-                        pz.InitiateFragmentation(NewPictureId, bi);
-                    }
+                    int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
+                    Bitmap bm = (Bitmap)Image.FromFile(dialog.FileName);
+                    BitmapImage bi = pz.BitmapToImageSource(bm);
+                    if (ImageSelected != null)
+                        ImageSelected(NewPictureId);
+                    pz.InitiateFragmentation(NewPictureId, bi);
                 }
                 catch (Exception ex)
                 {
@@ -162,5 +160,6 @@ namespace PuzzleGame.ViewModels
                 }
             }
         }
+
     }
 }

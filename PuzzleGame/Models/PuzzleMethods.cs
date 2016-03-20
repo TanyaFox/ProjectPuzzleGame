@@ -86,6 +86,8 @@ namespace PuzzleGame.Models
                 throw new ArgumentException();
         }
 
+
+
         public Dictionary<string, string> DefineGameModes()
         {
             Dictionary<string, string> gameMode = new Dictionary<string, string>();
@@ -94,6 +96,7 @@ namespace PuzzleGame.Models
 
             return gameMode;
         }
+
 
         public Dictionary<string, string> DefineDifficultyLevels()
         {
@@ -111,16 +114,16 @@ namespace PuzzleGame.Models
             return mode + def;
         }
 
-        public void InitiateFragmentation(int id, BitmapFrame pic)
+        public void InitiateFragmentation(int id, BitmapImage pic)
         {
             int heigth = pic.PixelHeight;
             int width = pic.PixelWidth;
-            SendFragments(1, id, 3, 3, pic, width, heigth);
-            SendFragments(2, id, 4, 5, pic, width, heigth);
-            SendFragments(3, id, 6, 6, pic, width, heigth);
+            SendFragments(9, id, 3, 3, pic, width, heigth);
+            SendFragments(20, id, 4, 5, pic, width, heigth);
+            SendFragments(36, id, 6, 6, pic, width, heigth);
         }
 
-        private void SendFragments(int dif, int id, int x, int y, BitmapFrame pic, int width, int heigth)
+        private void SendFragments(int dif, int id, int x, int y, BitmapImage pic, int width, int heigth)
         {
             BitmapEncoder be = new JpegBitmapEncoder();
             int h = heigth / x;
@@ -139,14 +142,30 @@ namespace PuzzleGame.Models
                         {
                             be.Save(ms);
                             outBytes = ms.ToArray();
-                            db.AddPartsOfPicture(id, outBytes, dif, i * x + j + 1);
+                            db.AddPartsOfPicture(id, outBytes, dif, i * y + j + 1);
                         }
+                        be = new JpegBitmapEncoder();
                     }
                     else
                         throw new ArgumentException();
                 }
                   
 
+        }
+        public BitmapImage BitmapToImageSource(Bitmap bitmap)
+        {
+            using (MemoryStream memory = new MemoryStream())
+            {
+                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
+                memory.Position = 0;
+                BitmapImage bitmapimage = new BitmapImage();
+                bitmapimage.BeginInit();
+                bitmapimage.StreamSource = memory;
+                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapimage.EndInit();
+
+                return bitmapimage;
+            }
         }
     }
 }
