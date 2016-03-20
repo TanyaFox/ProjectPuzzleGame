@@ -21,33 +21,33 @@
         <Button Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Right" Height="60" Width="300"  FontSize="26" FontFamily="Comic Sans MS Bold" Margin="0 20 10 20" Background="Bisque">Сохранить игру</Button>
 
 
-        <Button Name="{Binding ButtonNumber[0]}" Grid.Column="0" Grid.Row="2" Height="170" Width="300" Margin="20 0 0 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}">
+        <Button Grid.Column="0" Grid.Row="2" Height="170" Width="300" Margin="20 0 0 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}" CommandParameter="1">
             <Image Source="{Binding Image[0]}"></Image>
         </Button>
-        <Button Name="{Binding ButtonNumber[1]}" Grid.Column="1" Grid.Row="2" Height="170" Width="300" Margin="0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}">
+        <Button Grid.Column="1" Grid.Row="2" Height="170" Width="300" Margin="0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}" CommandParameter="2">
             <Image Source="{Binding Image[1]}"></Image>
         </Button>
-        <Button Name="{Binding ButtonNumber[2]}" Grid.Column="2" Grid.Row="2" Height="170" Width="300" Margin="0 0 20 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}">
+        <Button Grid.Column="2" Grid.Row="2" Height="170" Width="300" Margin="0 0 20 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}" CommandParameter="3">
             <Image Source="{Binding Image[2]}"></Image>
         </Button>
 
-        <Button Name="{Binding ButtonNumber[3]}" Grid.Column="0" Grid.Row="3" Height="170" Width="300" Margin="20 0 0 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}">
+        <Button Grid.Column="0" Grid.Row="3" Height="170" Width="300" Margin="20 0 0 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}" CommandParameter="4">
             <Image Source="{Binding Image[3]}"></Image>
         </Button>
-        <Button Name="{Binding ButtonNumber[4]}" Grid.Column="1" Grid.Row="3" Height="170" Width="300" Margin="0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}">
+        <Button Grid.Column="1" Grid.Row="3" Height="170" Width="300" Margin="0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}" CommandParameter="5">
             <Image Source="{Binding Image[4]}"></Image>
         </Button>
-        <Button Name="{Binding ButtonNumber[5]}" Grid.Column="2" Grid.Row="3" Height="170" Width="300" Margin="0 0 20 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}">
+        <Button Grid.Column="2" Grid.Row="3" Height="170" Width="300" Margin="0 0 20 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}" CommandParameter="6">
             <Image Source="{Binding Image[5]}"></Image>
         </Button>
 
-        <Button Name="{Binding ButtonNumber[6]}" Grid.Column="0" Grid.Row="4" Height="170" Width="300" Margin="20 0 0 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}">
+        <Button Grid.Column="0" Grid.Row="4" Height="170" Width="300" Margin="20 0 0 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}" CommandParameter="7">
             <Image Source="{Binding Image[6]}"></Image>
         </Button>
-        <Button Name="{Binding ButtonNumber[7]}" Grid.Column="1" Grid.Row="4" Height="170" Width="300" Margin="0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}">
+        <Button Grid.Column="1" Grid.Row="4" Height="170" Width="300" Margin="0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}" CommandParameter="8">
             <Image Source="{Binding Image[7]}"></Image>
         </Button>
-        <Button Name="{Binding ButtonNumber[8]}" Grid.Column="2" Grid.Row="4" Height="170" Width="300" Margin="0 0 20 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}">
+        <Button Grid.Column="2" Grid.Row="4" Height="170" Width="300" Margin="0 0 20 0" IsEnabled="{Binding IsEnabled}" Command="{Binding ButtonPressedCommand}" CommandParameter="9">
             <Image Source="{Binding Image[8]}"></Image>
         </Button>
         

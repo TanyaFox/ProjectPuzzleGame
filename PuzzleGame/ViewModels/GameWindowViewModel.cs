@@ -70,24 +70,10 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private List<string> _buttonNumber;
-        public List<string> ButtonNumber
-        {
-            get
-            {
-                return _buttonNumber;
-            }
-            set
-            {
-                _buttonNumber = value;
-                OnPropertyChanged("ButtonNumber");
-            }
-        }
-
         public GameWindowViewModel()
         {
 
-            ButtonPressedCommand = new Command(arg => ButtonPressedClick());
+            ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
             //_field = pz.CreateNewGame(1, 1, db.LoadPuzzle());
 
       
@@ -95,7 +81,7 @@ namespace PuzzleGame.ViewModels
 
         public ICommand ButtonPressedCommand { get; set; }
 
-        private void ButtonPressedClick()
+        private void ButtonPressedClick(object buttonNumber)
         {
 
 
