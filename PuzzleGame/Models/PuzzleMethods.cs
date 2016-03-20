@@ -50,6 +50,7 @@ namespace PuzzleGame.Models
 
         public IField CreateNewGame(int dif, int type, Dictionary<string, MemoryStream> ImagePieces)
         {
+
             List<byte[]> LoadedImagePieces = new List<byte[]>();
 
             for (int i = 1; i <= ImagePieces.Count; i++)

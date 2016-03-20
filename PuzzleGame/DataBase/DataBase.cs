@@ -75,7 +75,7 @@ namespace PuzzleGame
                                 byte[] bBuffer = new byte[bLength];
                                 reader.GetBytes(0, i, bBuffer, 0, bLength);
                                 MemoryStream mStream = new MemoryStream(bBuffer);
-                                PuzzleParts.Add(reader.GetString(i + 1), mStream);
+                                PuzzleParts.Add(reader.GetString(i + 1).Trim(), mStream);
                             }
                         }
                     }

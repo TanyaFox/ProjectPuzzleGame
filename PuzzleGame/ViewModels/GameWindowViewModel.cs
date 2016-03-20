@@ -76,6 +76,9 @@ namespace PuzzleGame.ViewModels
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
 
+            _image = new List<byte[]>();
+            _isEnabled = new List<bool>();
+
             _field = pz.CreateNewGame(1, 1, db.LoadPuzzle(id, 9));
             if (_field != null)
             {
