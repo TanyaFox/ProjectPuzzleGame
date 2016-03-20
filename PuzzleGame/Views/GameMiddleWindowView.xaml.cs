@@ -23,7 +23,7 @@ namespace PuzzleGame.Views
         public GameMiddleWindowView(int id)
         {
             InitializeComponent();
-            GameMiddleWindowViewModel vm = new GameMiddleWindowViewModel(id);
+            GameWindowViewModel vm = new GameWindowViewModel(id);
             this.DataContext = vm;
         }
     }
