@@ -39,7 +39,7 @@ namespace PuzzleGame.Models
             if (first == second)
             {
                 ListCell[second].CurrentElement = first;
-                ListCell[second].IsCorrect = true;
+                ListCell[second].IsCorrect = false;
             }
         }
     }

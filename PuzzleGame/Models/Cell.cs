@@ -14,13 +14,13 @@ namespace PuzzleGame.Models
 
         public Cell(int current, byte[] image)
         {
-            IsCorrect = false;
+            IsCorrect = true;
             CurrentElement = current;
             Image = image;
         }
         public Cell()
         {
-            IsCorrect = false;
+            IsCorrect = true;
             CurrentElement = 0;
             Image = null;
         }

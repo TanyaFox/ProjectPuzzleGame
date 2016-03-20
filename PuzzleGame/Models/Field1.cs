@@ -33,7 +33,7 @@ namespace PuzzleGame.Models
             {
                 Templist.Add(new Cell(rndList[i], ImagePieces[rndList[i]]));
                 if (Templist[i].CurrentElement == i)
-                    Templist[i].IsCorrect = true;
+                    Templist[i].IsCorrect = false;
             }
             this.ListCell = Templist;
         }
@@ -46,7 +46,7 @@ namespace PuzzleGame.Models
             {
                 Templist.Add(new Cell(LoadedState[i], ImagePieces[LoadedState[i]]));
                 if (Templist[i].CurrentElement == i)
-                    Templist[i].IsCorrect = true;
+                    Templist[i].IsCorrect = false;
             }
         }
 
@@ -57,9 +57,9 @@ namespace PuzzleGame.Models
             ListCell[first].CurrentElement = ListCell[second].CurrentElement;
             ListCell[second].CurrentElement = temp;
             if (ListCell[first].CurrentElement == first)
-                ListCell[first].IsCorrect = true;
+                ListCell[first].IsCorrect = false;
             if (ListCell[second].CurrentElement == second)
-                ListCell[second].IsCorrect = true;
+                ListCell[second].IsCorrect = false;
         }
     }
 }
