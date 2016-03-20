@@ -16,14 +16,14 @@ namespace PuzzleGame.Views
         {
         }
 
-        public void NavigateTo(string windowName, int id)
+        public void NavigateTo(string windowName, int id, int level)
         {
             Window windowObj;
             _windows = new Dictionary<string, Window>()
             { 
-                {"Tag1", new GameWindowView(id)},
-                {"Tag2", new GameMiddleWindowView(id)},
-                {"Tag3", new GameHardWindowView(id)},
+                {"Tag1", new GameWindowView(id, level)},
+                {"Tag2", new GameMiddleWindowView(id, level)},
+                {"Tag3", new GameHardWindowView(id, level)},
                 {"Drag&Drop1", new GameDragDropModeWindowView()},
                 {"Drag&Drop2", new GameDragDropModeMiddleWindowView()},
                 {"Drag&Drop3", new GameDragDropModeHardWindowView()}

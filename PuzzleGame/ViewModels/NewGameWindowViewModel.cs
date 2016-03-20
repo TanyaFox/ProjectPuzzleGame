@@ -125,7 +125,7 @@ namespace PuzzleGame.ViewModels
         private void ButtonPlayClick()
         {
             _navigationServiceGame = new NavigationServiceForGames();
-            _navigationServiceGame.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), _selectedImage.IdImage);
+           // _navigationServiceGame.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), _selectedImage.IdImage, _selectedImage);
         }
     }
 }

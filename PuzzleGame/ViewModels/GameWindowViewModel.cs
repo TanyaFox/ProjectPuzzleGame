@@ -72,7 +72,7 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        public GameWindowViewModel(int id)
+        public GameWindowViewModel(int id, int level)
         {
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
