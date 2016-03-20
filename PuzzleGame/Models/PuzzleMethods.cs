@@ -110,7 +110,7 @@ namespace PuzzleGame.Models
             return mode + def.ToString();
         }
 
-        public void InitiateFragmentation(int id, BitmapImage pic)
+        public void InitiateFragmentation(int id, BitmapFrame pic)
         {
             int heigth = pic.PixelHeight;
             int width = pic.PixelWidth;
@@ -119,7 +119,7 @@ namespace PuzzleGame.Models
             SendFragments(3, id, 6, 6, pic, width, heigth);
         }
 
-        private void SendFragments(int dif, int id, int x, int y, BitmapImage pic, int width, int heigth)
+        private void SendFragments(int dif, int id, int x, int y, BitmapFrame pic, int width, int heigth)
         {
             BitmapEncoder be = new JpegBitmapEncoder();
             int h = heigth / x;
