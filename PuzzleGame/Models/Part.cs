@@ -23,6 +23,11 @@ namespace PuzzleGame.Models
             get { return _trueNumber; }
             set { _trueNumber = value; }
         }
+
+        public Part()
+        {
+
+        }
         
         
     }
