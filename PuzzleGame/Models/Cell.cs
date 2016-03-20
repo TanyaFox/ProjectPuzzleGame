@@ -21,7 +21,7 @@ namespace PuzzleGame.Models
         public Cell()
         {
             IsNotCorrect = true;
-            CurrentElement = 0;
+            CurrentElement = -1;
             Image = null;
         }
     }
