@@ -128,16 +128,10 @@ namespace PuzzleGame
                     cmd.Parameters.AddWithValue("@Miniature", imageBytes);
                     connection.Open();
                     cmd.ExecuteNonQuery();
-
                     using (SqlCommand cmd1 = new SqlCommand("SELECT IDENT_CURRENT ('dbo.Picture')", connection))//список миниатюр
                     {
-                        using (SqlDataReader reader = cmd1.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                id = reader.GetInt32(0);
-                            }
-                        }
+
+                         id = Convert.ToInt32(cmd1.ExecuteScalar());
                         connection.Close();
                     }
                 }
