@@ -85,7 +85,7 @@ namespace PuzzleGame.ViewModels
                 for (int i = 0; i < _field.ListCell.Count; i++)
                 {
                     _image.Add(_field.ListCell[i].Image);
-                    _isEnabled.Add(_field.ListCell[i].IsCorrect);
+                    _isEnabled.Add(_field.ListCell[i].IsNotCorrect);
                 }
             }
       
@@ -105,8 +105,16 @@ namespace PuzzleGame.ViewModels
                 if (_changingCell != buttonNumber)
                 {
                     _field.CellChange(_changingCell, buttonNumber);
+                    List<bool> changedActiveButtons = new List<bool>();
+                    List<byte[]> changedPictures = new List<byte[]>();
                     _image[_changingCell] = _field.ListCell[_changingCell].Image;
-                    _isEnabled[buttonNumber] = _field.ListCell[buttonNumber].IsCorrect;
+                    _image[buttonNumber] = _field.ListCell[buttonNumber].Image;
+                    _isEnabled[buttonNumber] = _field.ListCell[buttonNumber].IsNotCorrect;
+                    _isEnabled[_changingCell] = _field.ListCell[_changingCell].IsNotCorrect;
+                    changedActiveButtons = _isEnabled;
+                    changedPictures = _image;
+                    Image = changedPictures;
+                    IsEnabled = changedActiveButtons;
                 }
                 _changingCell = -1;
             }

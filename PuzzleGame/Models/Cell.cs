@@ -8,19 +8,19 @@ namespace PuzzleGame.Models
 {
     class Cell
     {
-        public bool IsCorrect { get; set; }
+        public bool IsNotCorrect { get; set; }
         public int CurrentElement { get; set; }
         public byte[] Image { get; set; }
 
         public Cell(int current, byte[] image)
         {
-            IsCorrect = false;
+            IsNotCorrect = true;
             CurrentElement = current;
             Image = image;
         }
         public Cell()
         {
-            IsCorrect = false;
+            IsNotCorrect = true;
             CurrentElement = 0;
             Image = null;
         }
