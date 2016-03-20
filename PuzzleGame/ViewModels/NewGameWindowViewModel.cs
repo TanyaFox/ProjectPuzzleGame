@@ -8,6 +8,7 @@ using System.Windows.Input;
 using PuzzleGame.Interface;
 using PuzzleGame.Views;
 using PuzzleGame.Models;
+using System.Windows;
 
 namespace PuzzleGame.ViewModels
 {
@@ -113,10 +114,17 @@ namespace PuzzleGame.ViewModels
 
         public NewGameWindowViewModel()
         {
-            _gameMode = pz.DefineGameModes();
-            _levelDifficulty = pz.DefineDifficultyLevels();
-            _listOfPictures = db.LoadMiniatures(); //this should be in parallel task in order to prevent UI from blocking
-            ButtonPlayCommand = new Command(arg => ButtonPlayClick());
+            try
+            {
+                _gameMode = pz.DefineGameModes();
+                _levelDifficulty = pz.DefineDifficultyLevels();
+                _listOfPictures = db.LoadMiniatures(); //this should be in parallel task in order to prevent UI from blocking
+                ButtonPlayCommand = new Command(arg => ButtonPlayClick());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка!" + e.Message);
+            }
 
         }
 
@@ -124,8 +132,15 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonPlayClick()
         {
-            _navigationServiceGame = new NavigationServiceForGames();
-            _navigationServiceGame.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), _selectedImage.IdImage, Convert.ToInt32(_levelDifficulty[_difficulty]));
+            try
+            {
+                _navigationServiceGame = new NavigationServiceForGames();
+                _navigationServiceGame.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), _selectedImage.IdImage, Convert.ToInt32(_levelDifficulty[_difficulty]));
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Ошибка!" + e.Message);
+            }
         }
     }
 }

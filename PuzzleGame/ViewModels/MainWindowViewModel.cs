@@ -8,6 +8,7 @@ using System.Windows.Input;
 using PuzzleGame.Interface;
 using PuzzleGame.Views;
 using PuzzleGame.Models;
+using System.Windows;
 
 namespace PuzzleGame.ViewModels
 {
@@ -30,69 +31,90 @@ namespace PuzzleGame.ViewModels
 
         public MainWindowViewModel()
         {
-            ButtonNewGameCommand = new Command(arg => ButtonNewGameClick());
-            ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
-            ButtonAuthorsCommand = new Command(arg => ButtonAuthorsClick());
+            try
+            {
+                ButtonNewGameCommand = new Command(arg => ButtonNewGameClick());
+                ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
+                ButtonAuthorsCommand = new Command(arg => ButtonAuthorsClick());
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Ошибка!" + e.Message);
+            }
         }
 
         public ICommand ButtonNewGameCommand { get; set; }
 
         private void ButtonNewGameClick()
         {
-            _navigationService = new NavigationService();
-            _navigationService.NavigateTo("BeforeNewGame");
+            try
+            {
+                _navigationService = new NavigationService();
+                _navigationService.NavigateTo("BeforeNewGame");
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Ошибка!" + e.Message);
+            }
         }
 
         public ICommand ButtonSavedGameCommand { get; set; }
 
         private void ButtonSavedGameClick()
         {
-            _navigationServiceForGames = new NavigationServiceForGames();
-            Game g = db.LoadGame();
-            int Id = g.ImageID;
-            int level;
-            string dif;
-            string mode;
-            switch (g.Difficulty)
+            try
             {
-                case 9:
-                    {
-                        level = 1;
-                        dif = "1";
-                        break;
-                    }
-                case 20:
-                    {
-                        level = 2;
-                        dif = "2";
-                        break;
-                    }
-                case 36:
-                    {
-                        level = 3;
-                        dif = "3";
-                        break;
-                    }
-                default:
-                    throw new ArgumentException();
+                _navigationServiceForGames = new NavigationServiceForGames();
+                Game g = db.LoadGame();
+                int Id = g.ImageID;
+                int level;
+                string dif;
+                string mode;
+                switch (g.Difficulty)
+                {
+                    case 9:
+                        {
+                            level = 1;
+                            dif = "1";
+                            break;
+                        }
+                    case 20:
+                        {
+                            level = 2;
+                            dif = "2";
+                            break;
+                        }
+                    case 36:
+                        {
+                            level = 3;
+                            dif = "3";
+                            break;
+                        }
+                    default:
+                        throw new ArgumentException();
+                }
+                switch (g.Type)
+                {
+                    case 1:
+                        {
+                            mode = "Tag";
+                            break;
+                        }
+                    case 2:
+                        {
+                            mode = "Drag&Drop";
+                            break;
+                        }
+                    default:
+                        throw new ArgumentException();
+                }
+                IField LoadedField = pz.LoadSave(g);
+                _navigationServiceForGames.NavigateTo(pz.FormMode(mode, dif), Id, level, LoadedField);
             }
-            switch (g.Type)
+            catch(Exception e)
             {
-                case 1:
-                    {
-                        mode = "Tag";
-                        break;
-                    }
-                case 2:
-                    {
-                        mode = "Drag&Drop";
-                        break;
-                    }
-                default:
-                    throw new ArgumentException();
+                MessageBox.Show("Ошибка!" + e.Message);
             }
-            IField LoadedField = pz.LoadSave(g);
-            _navigationServiceForGames.NavigateTo(pz.FormMode(mode, dif), Id, level, LoadedField);
             
         }
 
@@ -100,8 +122,15 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonAuthorsClick()
         {
-            _navigationService = new NavigationService();
-            _navigationService.NavigateTo("AboutWindow");
+            try
+            {
+                _navigationService = new NavigationService();
+                _navigationService.NavigateTo("AboutWindow");
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Ошибка!" + e.Message);
+            }
         }
     }
 }
