@@ -14,6 +14,8 @@ namespace PuzzleGame.ViewModels
     {
         PuzzleMethods pz = new PuzzleMethods();
         DataBase db = new DataBase();
+        CustomNewGameWindowViewModel cng = new CustomNewGameWindowViewModel();
+        NewGameWindowViewModel ng = new NewGameWindowViewModel();
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
@@ -30,12 +32,12 @@ namespace PuzzleGame.ViewModels
             set { _field = value; }
         }
 
-        private int[] _changingCells;
+        private int _changingCell;
 
-        public int[] ChangingCells
+        public int ChangingCell
         {
-            get { return _changingCells; }
-            set { _changingCells = value; }
+            get { return _changingCell; }
+            set { _changingCell = value; }
         }
         
 
@@ -72,10 +74,17 @@ namespace PuzzleGame.ViewModels
 
         public GameWindowViewModel()
         {
-
+            _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
-            //_field = pz.CreateNewGame(1, 1, db.LoadPuzzle());
-
+            if (ng != null)
+                ng.ImageSelected += a => pz.GetNewGamePicture(a);
+            else
+                cng.ImageSelected += a => pz.GetNewGamePicture(a);
+            for (int i = 0; i < _field.ListCell.Count; i++ )
+            {
+                _image.Add(_field.ListCell[i].Image);
+                _isEnabled.Add(_field.ListCell[i].IsCorrect);
+            }
       
         }
 
@@ -83,8 +92,23 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonPressedClick(object buttonNumber)
         {
-
+            if (_changingCell == -1)
+            {
+                _changingCell = (int)buttonNumber;
+            }
+            else
+            {
+                if (_changingCell != (int)buttonNumber)
+                {
+                    _field.CellChange(_changingCell, (int)buttonNumber);
+                    _image[_changingCell] = _field.ListCell[_changingCell].Image;
+                    _isEnabled[(int)buttonNumber] = _field.ListCell[(int)buttonNumber].IsCorrect;
+                }
+                _changingCell = -1;
+            }
 
         }
+
+
     }
 }
