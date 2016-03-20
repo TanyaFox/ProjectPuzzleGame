@@ -18,6 +18,8 @@ namespace PuzzleGame.ViewModels
 {
     class CustomNewGameWindowViewModel : INotifyPropertyChanged
     {
+        int Id;
+
         public event PropertyChangedEventHandler PropertyChanged;
         public event Action<int> ImageSelected;
         private void OnPropertyChanged(string name)
@@ -27,6 +29,7 @@ namespace PuzzleGame.ViewModels
         }
 
         private INavigationService _navigationService;
+        private INavigationServiceGames _navigationServiceForGames;
 
         private Dictionary<string,string> _gameMode;
         public Dictionary<string,string> GameMode
@@ -131,9 +134,9 @@ namespace PuzzleGame.ViewModels
         private void ButtonPlayClick()
         {
 
-            _navigationService = new NavigationService();
+            _navigationServiceForGames = new NavigationServiceForGames();
 
-            _navigationService.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty])); //Here should be put the name from user's setting (from form)
+            _navigationServiceForGames.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), Id, Convert.ToInt32(_levelDifficulty[_difficulty])); //Here should be put the name from user's setting (from form)
         }
 
         private void ButtonUploadPictureClick()
@@ -150,8 +153,7 @@ namespace PuzzleGame.ViewModels
                     int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
                     Bitmap bm = (Bitmap)Image.FromFile(dialog.FileName);
                     BitmapImage bi = pz.BitmapToImageSource(bm);
-                    if (ImageSelected != null)
-                        ImageSelected(NewPictureId);
+                    Id = NewPictureId;
                     pz.InitiateFragmentation(NewPictureId, bi);
                 }
                 catch (Exception ex)
