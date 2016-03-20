@@ -14,6 +14,7 @@ namespace PuzzleGame.ViewModels
     class MainWindowViewModel : INotifyPropertyChanged
     {
         private INavigationServiceGames _navigationServiceForGames;
+
         private INavigationService _navigationService;
         public INavigationService NavigationService { get; set; }
 
