@@ -172,7 +172,7 @@ namespace PuzzleGame
                 using (SqlConnection connection = new SqlConnection(conString))
                 {
                     connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("SELECT l.ImageName, l.[Level], l.Mode, l.Location FROM dbo.LastGame as l", connection))
+                    using (SqlCommand cmd = new SqlCommand("SELECT p.Name, l.[Level], l.Mode, l.Location FROM dbo.LastGame as l, dbo.Picture as p WHERE l.IdImage=p.Id", connection))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
