@@ -1,34 +1,73 @@
 ﻿<Window x:Class="PuzzleGame.Views.GameDragDropModeWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Собери паззл! Уровень: легко" Height="920" Width="1300" WindowStartupLocation="CenterScreen">
+        Title="Puzzle World!" Height="700" Width="1200" WindowStartupLocation="CenterScreen" Icon="/Resources/MainIcon.png">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="70" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Margin="10">Уровень: легко</TextBlock>
-        <TextBlock Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" Margin="10">Правила: перетаскивай кусочки паззла из списка справа, чтобы собрать всю картинку</TextBlock>
-        <Image Grid.Column="0" Grid.Row="2" Height="240" Width="300" Margin="20 0 0 0" ></Image>
-        <Image Grid.Column="1" Grid.Row="2" Height="240" Width="300" Margin="0"></Image>
-        <Image Grid.Column="2" Grid.Row="2" Height="240" Width="300" Margin="0 0 20 0"></Image>
-        <Image Grid.Column="0" Grid.Row="3" Height="240" Width="300" Margin="20 0 0 0"></Image>
-        <Image Grid.Column="1" Grid.Row="3" Height="240" Width="300" Margin="0"></Image>
-        <Image Grid.Column="2" Grid.Row="3" Height="240" Width="300" Margin="0 0 20 0"></Image>
-        <Image Grid.Column="0" Grid.Row="4" Height="240" Width="300" Margin="20 0 0 0"></Image>
-        <Image Grid.Column="1" Grid.Row="4" Height="240" Width="300" Margin="0"></Image>
-        <Image Grid.Column="2" Grid.Row="4" Height="240" Width="300" Margin="0 0 20 0"></Image>
-        <Button Grid.Row="5" Grid.ColumnSpan="3" Height="40" Width="200" Margin="20" FontSize="20">Сохранить игру</Button>
-        <ListBox Grid.RowSpan="4" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="700" Width="300" Margin="20 0 20 0"></ListBox>
+
+        <TextBlock Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="26" FontFamily="Comic Sans MS Bold" Margin="20 10 20 10">Уровень: легко</TextBlock>
+        <TextBlock Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS" Margin="20 10 20 10">Правила: перетаскивай кусочки паззла из списка справа, чтобы собрать всю картинку.</TextBlock>
+        <Button Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Right" Height="60" Width="300"  FontSize="26" FontFamily="Comic Sans MS Bold" Margin="0 10 10 10" Background="Bisque" Command="{Binding ButtonSavedGameCommand}">Сохранить игру</Button>
+
+        <Border BorderBrush="SteelBlue" BorderThickness="1" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="170" Width="300" Margin="20 0 0 0">
+            <Image Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="170" Width="300" Source="{Binding Image[0]}" AllowDrop="{Binding IsAllow[0]}"></Image>
+        </Border>
+        <Border BorderBrush="SteelBlue" BorderThickness="1" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Height="170" Width="300" Margin="0">
+            <Image Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" Height="170" Width="300" Margin="0" Source="{Binding Image[1]}" AllowDrop="{Binding IsAllow[1]}"></Image>
+        </Border>
+        <Border BorderBrush="SteelBlue" BorderThickness="1" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="170" Width="300" Margin="0 0 20 0">
+            <Image Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="170" Width="300" Margin="0 0 20 0" Source="{Binding Image[2]}" AllowDrop="{Binding IsAllow[2]}"></Image>
+        </Border>
+
+        <Border BorderBrush="SteelBlue" BorderThickness="1" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Stretch"  Height="170" Width="300" Margin="20 0 0 0">
+            <Image Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Stretch"  Height="170" Width="300" Margin="20 0 0 0" Source="{Binding Image[3]}" AllowDrop="{Binding IsAllow[3]}"></Image>
+        </Border>
+        <Border BorderBrush="SteelBlue" BorderThickness="1" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="170" Width="300" Margin="0">
+            <Image Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="170" Width="300" Margin="0" Source="{Binding Image[4]}" AllowDrop="{Binding IsAllow[4]}"></Image>
+        </Border>
+        <Border BorderBrush="SteelBlue" BorderThickness="1" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="170" Width="300" Margin="0 0 20 0">
+            <Image Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="170" Width="300" Margin="0 0 20 0" Source="{Binding Image[5]}" AllowDrop="{Binding IsAllow[5]}"></Image>
+        </Border>
+
+        <Border BorderBrush="SteelBlue" BorderThickness="1" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top" Height="170" Width="300" Margin="20 0 0 0">
+            <Image Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Top" Height="170" Width="300" Margin="20 0 0 0" Source="{Binding Image[6]}" AllowDrop="{Binding IsAllow[6]}"></Image>
+        </Border>
+        <Border BorderBrush="SteelBlue" BorderThickness="1" Grid.Column="1" Grid.Row="4" VerticalAlignment="Top" Height="170" Width="300" Margin="0">
+            <Image Grid.Column="1" Grid.Row="4" VerticalAlignment="Top" Height="170" Width="300" Margin="0" Source="{Binding Image[7]}" AllowDrop="{Binding IsAllow[7]}"></Image>
+        </Border>
+        <Border BorderBrush="SteelBlue" BorderThickness="1" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Height="170" Width="300" Margin="0 0 20 0">
+            <Image Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Top" Height="170" Width="300" Margin="0 0 20 0" Source="{Binding Image[8]}" AllowDrop="{Binding IsAllow[8]}"></Image>
+        </Border>
+        
+        <ListBox Grid.RowSpan="4" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center" Height="550" Width="200" Margin="20 0 20 0" ItemsSource="{Binding ListOfParts}" SelectedItem="{Binding SelectedPart}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="15" BorderThickness="2" BorderBrush="SteelBlue" CornerRadius="4" Height="100" Width="180">
+                        <Grid Margin="3" HorizontalAlignment="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.Column="1" Height="180" Width="Auto" Margin="10 10 5 10" Source="{Binding Part}"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>
