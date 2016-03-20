@@ -13,6 +13,10 @@ namespace PuzzleGame.ViewModels
 {
     class GameWindowViewModel : INotifyPropertyChanged
     {
+
+        int Id;
+        int Level;
+        int cells;
         PuzzleMethods pz = new PuzzleMethods();
         DataBase db = new DataBase();
         static object lockobj  = new object();
@@ -74,10 +78,12 @@ namespace PuzzleGame.ViewModels
 
         public GameWindowViewModel(int id, int level)
         {
+            Id = id;
+            Level = level;
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
             ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
-            CallPopulateMethod(id, level);      
+            CallPopulateMethod();      
         }
 
         public ICommand ButtonPressedCommand { get; set; }
@@ -114,21 +120,28 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonSavedGameClick()
         {
-
+            string location = "";
+            for (int i = 0; i < _field.ListCell.Count; i++)
+            {
+                location = location + _field.ListCell[i].CurrentElement.ToString() + ",";
+            }
+            location = location.Substring(0, location.Length - 1);
+            db.SaveGame(Id, 1, cells, location);
+            MessageBox.Show("Игра сохранена!");
         }
 
-        private async void CallPopulateMethod(int id, int level)
+        private async void CallPopulateMethod()
         {
             bool x = false;
-            x = await PopulateProperties(id, level);
+            x = await PopulateProperties();
             MessageBox.Show("Поздравляем, вы победили!");
 
         }
 
-        private async Task<bool> PopulateProperties(int id, int level)
+        private async Task<bool> PopulateProperties()
         {
-            int cells;
-            switch (level)
+            
+            switch (Level)
             {
                 case 1:
                     {
@@ -152,7 +165,7 @@ namespace PuzzleGame.ViewModels
             _image = new List<byte[]>();
             _isEnabled = new List<bool>();
 
-            _field = pz.CreateNewGame(level, 1, db.LoadPuzzle(id, cells));
+            _field = pz.CreateNewGame(Level, 1, db.LoadPuzzle(Id, cells));
             if (_field != null)
             {
                 for (int i = 0; i < _field.ListCell.Count; i++)

@@ -139,7 +139,7 @@ namespace PuzzleGame.ViewModels
         {
             //These all should be in parallel task
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Pictures|*.jpg;*.gif;*.png;*.jpeg";
+            dialog.Filter = "Pictures|*.jpg;*.jpeg";
             dialog.InitialDirectory = Environment.CurrentDirectory;
             Stream st = null;
             if (dialog.ShowDialog() != null)

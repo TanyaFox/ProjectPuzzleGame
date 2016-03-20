@@ -97,7 +97,7 @@ namespace PuzzleGame
 
                     var cmd = new SqlCommand("СохранениеИгры", connection);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ImageName", ImageId);
+                    cmd.Parameters.AddWithValue("@ImageId", ImageId);
                     cmd.Parameters.AddWithValue("@Mode", Type);
                     cmd.Parameters.AddWithValue("@Level", Difficulty);
                     cmd.Parameters.AddWithValue("@Location", PartLocation);
