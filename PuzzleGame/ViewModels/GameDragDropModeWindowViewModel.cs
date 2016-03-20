@@ -15,5 +15,33 @@ namespace PuzzleGame.ViewModels
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
+
+        private List<byte[]> _image;
+        public List<byte[]> Image
+        {
+            get
+            {
+                return _image;
+            }
+            set
+            {
+                _image = value;
+                OnPropertyChanged("Image");
+            }
+        }
+
+        private List<bool> _isAllow;
+        public List<bool> IsAllow
+        {
+            get
+            {
+                return _isAllow;
+            }
+            set
+            {
+                _isAllow = value;
+                OnPropertyChanged("IsAllow");
+            }
+        }
     }
 }

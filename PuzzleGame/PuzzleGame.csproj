@@ -72,8 +72,6 @@
     <Compile Include="ViewModels\BeforeNewGameWindowViewModel.cs" />
     <Compile Include="ViewModels\Command.cs" />
     <Compile Include="ViewModels\CustomNewGameWindowViewModel.cs" />
-    <Compile Include="ViewModels\GameDragDropModeHardWindowViewModel.cs" />
-    <Compile Include="ViewModels\GameDragDropModeMiddleWindowViewModel.cs" />
     <Compile Include="ViewModels\GameDragDropModeWindowViewModel.cs" />
     <Compile Include="ViewModels\GameWindowViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

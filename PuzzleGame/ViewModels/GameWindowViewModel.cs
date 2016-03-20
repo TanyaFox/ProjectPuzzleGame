@@ -43,9 +43,6 @@ namespace PuzzleGame.ViewModels
             get { return _changingCell; }
             set { _changingCell = value; }
         }
-        
-
-        private INavigationService _navigationService;
 
 
         private List<byte[]> _image;
