@@ -29,6 +29,14 @@ namespace PuzzleGame.ViewModels
             get { return _field; }
             set { _field = value; }
         }
+
+        private int[] _changingCells;
+
+        public int[] ChangingCells
+        {
+            get { return _changingCells; }
+            set { _changingCells = value; }
+        }
         
 
         private INavigationService _navigationService;
@@ -89,6 +97,7 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonPressedClick()
         {
+
 
         }
     }

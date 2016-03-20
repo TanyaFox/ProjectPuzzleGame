@@ -14,6 +14,8 @@ namespace PuzzleGame.ViewModels
     class NewGameWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public event Action<int> ImageSelected;
+
         private void OnPropertyChanged(string name)
         {
             if (PropertyChanged != null)
@@ -124,6 +126,8 @@ namespace PuzzleGame.ViewModels
         {
             //Here should be some logic for image transfer into the gameWindow
             _navigationService = new NavigationService();
+            if (ImageSelected != null)
+                ImageSelected(_selectedImage.IdImage);
             _navigationService.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]));
         }
     }
