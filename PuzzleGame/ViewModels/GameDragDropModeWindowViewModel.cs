@@ -62,8 +62,8 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private List<Cell> _listOfParts;
-        public List<Cell> ListOfParts
+        private List<Part> _listOfParts;
+        public List<Part> ListOfParts
         {
             get
             {
@@ -76,8 +76,8 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private Cell _selectedPart;
-        public Cell SelectedPart
+        private Part _selectedPart;
+        public Part SelectedPart
         {
             get
             {
