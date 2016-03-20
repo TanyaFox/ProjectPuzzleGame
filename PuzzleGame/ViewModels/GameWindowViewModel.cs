@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using PuzzleGame.Interface;
 using PuzzleGame.Models;
+using System.Windows;
 
 namespace PuzzleGame.ViewModels
 {
@@ -14,7 +15,7 @@ namespace PuzzleGame.ViewModels
     {
         PuzzleMethods pz = new PuzzleMethods();
         DataBase db = new DataBase();
-
+        static object lockobj  = new object();
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
@@ -76,20 +77,7 @@ namespace PuzzleGame.ViewModels
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
             ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
-
-            _image = new List<byte[]>();
-            _isEnabled = new List<bool>();
-
-            _field = pz.CreateNewGame(1, 1, db.LoadPuzzle(id, 9));
-            if (_field != null)
-            {
-                for (int i = 0; i < _field.ListCell.Count; i++)
-                {
-                    _image.Add(_field.ListCell[i].Image);
-                    _isEnabled.Add(_field.ListCell[i].IsNotCorrect);
-                }
-            }
-      
+            CallPopulateMethod(id);      
         }
 
         public ICommand ButtonPressedCommand { get; set; }
@@ -129,6 +117,47 @@ namespace PuzzleGame.ViewModels
 
         }
 
+        private async void CallPopulateMethod(int id)
+        {
+            bool x = false;
+            x = await PopulateProperties(id);
+            MessageBox.Show("Поздравляем, вы победили!");
+
+        }
+
+        private async Task<bool> PopulateProperties(int id)
+        {
+            _image = new List<byte[]>();
+            _isEnabled = new List<bool>();
+
+            _field = pz.CreateNewGame(1, 1, db.LoadPuzzle(id, 9));
+            if (_field != null)
+            {
+                for (int i = 0; i < _field.ListCell.Count; i++)
+                {
+                    _image.Add(_field.ListCell[i].Image);
+                    _isEnabled.Add(_field.ListCell[i].IsNotCorrect);
+                }
+            }
+
+            Task t = new Task(() =>
+            {
+                bool b = false;
+                while (!b)
+                {
+                    b = true;
+                    lock (lockobj)
+                        for (int i = 0; i < _isEnabled.Count; i++ )
+                        {
+                            b = b && !_isEnabled[i];
+                        }
+                }
+
+            });
+            t.Start();
+            await t;
+            return true;
+        }
 
     }
 }
