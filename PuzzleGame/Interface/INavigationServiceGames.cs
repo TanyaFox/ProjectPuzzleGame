@@ -8,6 +8,7 @@ namespace PuzzleGame.Interface
 {
     public interface INavigationServiceGames
     {
+        void NavigateTo(string windowName, int id, int level);
         void NavigateTo(string windowName, int id, int level, IField field);
     }
 }
