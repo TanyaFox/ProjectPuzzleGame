@@ -105,9 +105,9 @@ namespace PuzzleGame.Models
             return levelDifficulty;
         }
 
-        public string FormMode(string def, string mode)
+        public string FormMode(string mode, string def)
         {
-            return mode + def.ToString();
+            return mode + def;
         }
 
         public void InitiateFragmentation(int id, BitmapFrame pic)

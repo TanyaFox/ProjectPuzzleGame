@@ -14,8 +14,8 @@ namespace PuzzleGame.ViewModels
     {
         PuzzleMethods pz = new PuzzleMethods();
         DataBase db = new DataBase();
-        CustomNewGameWindowViewModel cng = new CustomNewGameWindowViewModel();
-        NewGameWindowViewModel ng = new NewGameWindowViewModel();
+        //CustomNewGameWindowViewModel cng = new CustomNewGameWindowViewModel();
+        //NewGameWindowViewModel ng = new NewGameWindowViewModel();
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
@@ -76,14 +76,17 @@ namespace PuzzleGame.ViewModels
         {
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
-            if (ng != null)
-                ng.ImageSelected += a => pz.GetNewGamePicture(a);
-            else
-                cng.ImageSelected += a => pz.GetNewGamePicture(a);
-            for (int i = 0; i < _field.ListCell.Count; i++ )
+            //if (ng != null)
+            //    ng.ImageSelected += a => pz.GetNewGamePicture(a);
+            //else
+            //    cng.ImageSelected += a => pz.GetNewGamePicture(a);
+            if (_field != null)
             {
-                _image.Add(_field.ListCell[i].Image);
-                _isEnabled.Add(_field.ListCell[i].IsCorrect);
+                for (int i = 0; i < _field.ListCell.Count; i++)
+                {
+                    _image.Add(_field.ListCell[i].Image);
+                    _isEnabled.Add(_field.ListCell[i].IsCorrect);
+                }
             }
       
         }
