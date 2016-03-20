@@ -56,8 +56,8 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private bool _isEnabled;
-        public bool IsEnabled
+        private List<bool> _isEnabled;
+        public List<bool> IsEnabled
         {
             get
             {
