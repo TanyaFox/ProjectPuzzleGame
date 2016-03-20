@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using PuzzleGame.Interface;
 using PuzzleGame.ViewModels;
 
 namespace PuzzleGame.Views
@@ -20,10 +21,17 @@ namespace PuzzleGame.Views
     /// </summary>
     public partial class GameDragDropModeMiddleWindowView : Window
     {
-        public GameDragDropModeMiddleWindowView()
+        public GameDragDropModeMiddleWindowView(int id, int level)
         {
             InitializeComponent();
-            GameDragDropModeWindowViewModel vm = new GameDragDropModeWindowViewModel();
+            GameDragDropModeWindowViewModel vm = new GameDragDropModeWindowViewModel(id, level);
+            this.DataContext = vm;
+        }
+
+        public GameDragDropModeMiddleWindowView(int id, int level, IField field)
+        {
+            InitializeComponent();
+            GameDragDropModeWindowViewModel vm = new GameDragDropModeWindowViewModel(id, level, field);
             this.DataContext = vm;
         }
     }

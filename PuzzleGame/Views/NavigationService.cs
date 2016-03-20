@@ -16,9 +16,6 @@ namespace PuzzleGame.Views
 
         public NavigationService()
         {
-            _windows["Drag&Drop1"] = new GameDragDropModeWindowView();
-            _windows["Drag&Drop2"] = new GameDragDropModeMiddleWindowView();
-            _windows["Drag&Drop3"] = new GameDragDropModeHardWindowView();
             _windows["AboutWindow"] = new AboutAuthorsWindowView();
             _windows["BeforeNewGame"] = new BeforeNewGameWindowView();
             _windows["NewGame"] = new NewGameWindowView();
