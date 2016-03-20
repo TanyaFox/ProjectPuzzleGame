@@ -83,7 +83,7 @@ namespace PuzzleGame.ViewModels
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
             ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
-            CallPopulateMethod();      
+            CallPopulateMethod(true);      
         }
 
         public GameWindowViewModel(int id, int level, IField field)
@@ -93,7 +93,8 @@ namespace PuzzleGame.ViewModels
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
             ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
-            CallPopulateMethod();
+            _field = field;
+            CallPopulateMethod(false);
         }
 
         public ICommand ButtonPressedCommand { get; set; }
@@ -140,15 +141,15 @@ namespace PuzzleGame.ViewModels
             MessageBox.Show("Игра сохранена!");
         }
 
-        private async void CallPopulateMethod()
+        private async void CallPopulateMethod(bool a)
         {
             bool x = false;
-            x = await PopulateProperties();
+            x = await PopulateProperties(a);
             MessageBox.Show("Поздравляем, вы победили!");
 
         }
 
-        private async Task<bool> PopulateProperties()
+        private async Task<bool> PopulateProperties(bool a)
         {
             
             switch (Level)
@@ -174,8 +175,11 @@ namespace PuzzleGame.ViewModels
 
             _image = new List<byte[]>();
             _isEnabled = new List<bool>();
+            if (a)
+            {
+                _field = pz.CreateNewGame(Level, 1, db.LoadPuzzle(Id, cells));
+            }
 
-            _field = pz.CreateNewGame(Level, 1, db.LoadPuzzle(Id, cells));
             if (_field != null)
             {
                 for (int i = 0; i < _field.ListCell.Count; i++)
