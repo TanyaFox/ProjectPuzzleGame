@@ -75,6 +75,7 @@ namespace PuzzleGame.ViewModels
         {
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
+            ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
 
             _image = new List<byte[]>();
             _isEnabled = new List<bool>();
@@ -110,6 +111,13 @@ namespace PuzzleGame.ViewModels
                 }
                 _changingCell = -1;
             }
+
+        }
+
+        public ICommand ButtonSavedGameCommand { get; set; }
+
+        private void ButtonSavedGameClick()
+        {
 
         }
 
