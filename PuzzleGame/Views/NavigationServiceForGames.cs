@@ -24,9 +24,9 @@ namespace PuzzleGame.Views
                 {"Tag1", new GameWindowView(id, level)},
                 {"Tag2", new GameMiddleWindowView(id, level)},
                 {"Tag3", new GameHardWindowView(id, level)},
-                {"Drag&Drop1", new GameDragDropModeWindowView()},
-                {"Drag&Drop2", new GameDragDropModeMiddleWindowView()},
-                {"Drag&Drop3", new GameDragDropModeHardWindowView()}
+                {"Drag&Drop1", new GameDragDropModeWindowView(id, level)},
+                {"Drag&Drop2", new GameDragDropModeMiddleWindowView(id, level)},
+                {"Drag&Drop3", new GameDragDropModeHardWindowView(id, level)}
             };
 
             if (_windows.TryGetValue(windowName, out windowObj))
@@ -47,9 +47,9 @@ namespace PuzzleGame.Views
                 {"Tag1", new GameWindowView(id, level, field)},
                 {"Tag2", new GameMiddleWindowView(id, level, field)},
                 {"Tag3", new GameHardWindowView(id, level, field)},
-                {"Drag&Drop1", new GameDragDropModeWindowView()},
-                {"Drag&Drop2", new GameDragDropModeMiddleWindowView()},
-                {"Drag&Drop3", new GameDragDropModeHardWindowView()}
+                {"Drag&Drop1", new GameDragDropModeWindowView(id, level, field)},
+                {"Drag&Drop2", new GameDragDropModeMiddleWindowView(id, level, field)},
+                {"Drag&Drop3", new GameDragDropModeHardWindowView(id, level, field)}
             };
 
             if (_windows.TryGetValue(windowName, out windowObj))

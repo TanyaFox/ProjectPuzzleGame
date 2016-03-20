@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PuzzleGame.Interface;
 
 namespace PuzzleGame.ViewModels
 {
@@ -56,6 +57,16 @@ namespace PuzzleGame.ViewModels
                 _listOfParts = value;
                 OnPropertyChanged("ListOfParts");
             }
+        }
+
+        public GameDragDropModeWindowViewModel(int id, int level)
+        {
+
+        }
+
+        public GameDragDropModeWindowViewModel(int id, int level, IField field)
+        {
+
         }
     }
 }
