@@ -148,9 +148,9 @@ namespace PuzzleGame.ViewModels
                     {
                         using (st)
                         {
-                            //int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);//Waiting for changes in the AddPicture method.
-                            //BitmapFrame bi = BitmapFrame.Create(st);
-                            //pz.InitiateFragmentation(NewPictureId, bi);
+                            int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
+                            BitmapFrame bi = BitmapFrame.Create(st);
+                            pz.InitiateFragmentation(NewPictureId, bi);
                         }
                     }
                 }

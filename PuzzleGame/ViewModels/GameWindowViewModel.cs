@@ -13,6 +13,7 @@ namespace PuzzleGame.ViewModels
     class GameWindowViewModel : INotifyPropertyChanged
     {
         PuzzleMethods pz = new PuzzleMethods();
+        DataBase db = new DataBase();
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
@@ -21,7 +22,27 @@ namespace PuzzleGame.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
+        private Field1 _field;
+
+        public Field1 Field
+        {
+            get { return _field; }
+            set { _field = value; }
+        }
+        
+
         private INavigationService _navigationService;
+
+        private List<bool> _clickCheckList;
+        public List<bool> ClickCheckList
+        {
+            get { return _clickCheckList; }
+            set
+            {
+                _clickCheckList = value;
+                OnPropertyChanged("ClickCheckList");
+            }
+        }
 
         private List<byte[]> _image;
         public List<byte[]> Image
@@ -69,6 +90,19 @@ namespace PuzzleGame.ViewModels
         {
 
             ButtonPressedCommand = new Command(arg => ButtonPressedClick());
+            //_field = pz.CreateNewGame(1, 1, db.LoadPuzzle());
+            Task t = new Task(() =>
+            {
+                while (_clickCheckList.Count > 0)
+                {
+                    foreach (bool a in _clickCheckList)
+                        foreach(bool b in ClickCheckList)
+                        {
+                            if (a & b)
+                            { }
+                        }
+                }
+            });
       
         }
 
