@@ -124,7 +124,6 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonPlayClick()
         {
-            //Here should be some logic for image transfer into the gameWindow
             _navigationServiceGame = new NavigationServiceForGames();
             _navigationServiceGame.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), _selectedImage.IdImage);
         }
