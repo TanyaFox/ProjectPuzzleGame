@@ -19,7 +19,6 @@ namespace PuzzleGame.Models
         public IField LoadSave(Game savedGame)
         {
             List<byte[]> LoadedImagePieces = new List<byte[]>();
-            DataBase db = new DataBase();
             Dictionary<string, MemoryStream> LoadedImageDic = db.LoadPuzzle(savedGame.ImageID, savedGame.Difficulty);
             
             var parts = savedGame.PartsLocation.Split(',');

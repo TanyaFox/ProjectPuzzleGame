@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using PuzzleGame.Interface;
 using PuzzleGame.Views;
+using PuzzleGame.Models;
 
 namespace PuzzleGame.ViewModels
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {
+        private INavigationServiceGames _navigationServiceForGames;
         private INavigationService _navigationService;
         public INavigationService NavigationService { get; set; }
+
+        PuzzleMethods pz = new PuzzleMethods();
+        DataBase db = new DataBase();
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
@@ -41,33 +46,53 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonSavedGameClick()
         {
-            //Logic for receiving data about the last saved game from DB
-            _navigationService = new NavigationService();
-            string keyForWindowCreating = "Tag1"; //Here should be key from DB
-            switch (keyForWindowCreating)
+            _navigationServiceForGames = new NavigationServiceForGames();
+            Game g = db.LoadGame();
+            int Id = g.ImageID;
+            int level;
+            string dif;
+            string mode;
+            switch (g.Difficulty)
             {
-                case "Tag1":
-                    _navigationService.NavigateTo(keyForWindowCreating);
-                    break;
-                case "Tag2":
-                    _navigationService.NavigateTo(keyForWindowCreating);
-                    break;
-                case "Tag3":
-                    _navigationService.NavigateTo(keyForWindowCreating);
-                    break;
-                case "Drag&Drop1":
-                    _navigationService.NavigateTo(keyForWindowCreating);
-                    break;
-                case "Drag&Drop2":
-                    _navigationService.NavigateTo(keyForWindowCreating);
-                    break;
-                case "Drag&Drop3":
-                    _navigationService.NavigateTo(keyForWindowCreating);
-                    break;
+                case 9:
+                    {
+                        level = 1;
+                        dif = "1";
+                        break;
+                    }
+                case 20:
+                    {
+                        level = 2;
+                        dif = "2";
+                        break;
+                    }
+                case 36:
+                    {
+                        level = 3;
+                        dif = "3";
+                        break;
+                    }
                 default:
-                    _navigationService.NavigateTo(keyForWindowCreating);
-                    break;
+                    throw new ArgumentException();
             }
+            switch (g.Type)
+            {
+                case 1:
+                    {
+                        mode = "Tag";
+                        break;
+                    }
+                case 2:
+                    {
+                        mode = "Drag&Drop";
+                        break;
+                    }
+                default:
+                    throw new ArgumentException();
+            }
+            IField LoadedField = pz.LoadSave(g);
+            _navigationServiceForGames.NavigateTo(pz.FormMode(mode, dif), Id, level, LoadedField);
+            
         }
 
         public ICommand ButtonAuthorsCommand { get; set; }
