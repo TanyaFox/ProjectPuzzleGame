@@ -6,11 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using PuzzleGame.Interface;
+using PuzzleGame.Models;
 
 namespace PuzzleGame.ViewModels
 {
     class GameWindowViewModel : INotifyPropertyChanged
     {
+        PuzzleMethods pz = new PuzzleMethods();
+
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)
         {
@@ -64,6 +67,7 @@ namespace PuzzleGame.ViewModels
 
         public GameWindowViewModel()
         {
+
             ButtonPressedCommand = new Command(arg => ButtonPressedClick());
       
         }
