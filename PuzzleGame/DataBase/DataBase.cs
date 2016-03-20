@@ -129,13 +129,13 @@ namespace PuzzleGame
                     connection.Open();
                     cmd.ExecuteNonQuery();
 
-                    using (SqlCommand cmd1 = new SqlCommand("SELECT Id FROM dbo.Picture", connection))//список миниатюр
+                    using (SqlCommand cmd1 = new SqlCommand("SELECT IDENT_CURRENT ('dbo.Picture')", connection))//список миниатюр
                     {
                         using (SqlDataReader reader = cmd1.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                id = Convert.ToInt32((IDataRecord)reader[0]);
+                                id = reader.GetInt32(0);
                             }
                         }
                         connection.Close();
