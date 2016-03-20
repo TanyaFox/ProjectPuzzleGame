@@ -61,6 +61,7 @@
     <Compile Include="DataBase\DataBase.cs" />
     <Compile Include="Interface\IField.cs" />
     <Compile Include="Interface\INavigationService.cs" />
+    <Compile Include="Interface\INavigationServiceGames.cs" />
     <Compile Include="Models\Cell.cs" />
     <Compile Include="Models\Field1.cs" />
     <Compile Include="Models\Field2.cs" />
@@ -110,7 +111,7 @@
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NavigationService.cs" />
-    <Compile Include="Views\NavigationServiceForSettings.cs" />
+    <Compile Include="Views\NavigationServiceForGames.cs" />
     <Compile Include="Views\NewGameWindowView.xaml.cs">
       <DependentUpon>NewGameWindowView.xaml</DependentUpon>
     </Compile>

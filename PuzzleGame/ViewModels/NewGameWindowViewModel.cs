@@ -23,6 +23,7 @@ namespace PuzzleGame.ViewModels
         }
 
         private INavigationService _navigationService;
+        private INavigationServiceGames _navigationServiceGame;
 
         private Dictionary<string, string> _gameMode;
         public Dictionary<string, string> GameMode
@@ -125,10 +126,10 @@ namespace PuzzleGame.ViewModels
         private void ButtonPlayClick()
         {
             //Here should be some logic for image transfer into the gameWindow
-            _navigationService = new NavigationService();
-            if (ImageSelected != null)
-                ImageSelected(_selectedImage.IdImage);
-            _navigationService.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]));
+            _navigationServiceGame = new NavigationServiceForGames();
+            //if (ImageSelected != null) 
+                //ImageSelected(_selectedImage.IdImage);
+            _navigationServiceGame.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), _selectedImage.IdImage);
         }
     }
 }

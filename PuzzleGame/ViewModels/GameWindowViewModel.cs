@@ -72,14 +72,14 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        public GameWindowViewModel()
+        public GameWindowViewModel(int id)
         {
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
             //if (ng != null)
             //    ng.ImageSelected += a => pz.GetNewGamePicture(a);
             //else
-            //    cng.ImageSelected += a => pz.GetNewGamePicture(a);
+            //   cng.ImageSelected += a => pz.GetNewGamePicture(a);
             if (_field != null)
             {
                 for (int i = 0; i < _field.ListCell.Count; i++)

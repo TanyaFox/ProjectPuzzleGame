@@ -16,7 +16,7 @@ namespace PuzzleGame.Views
 
         public NavigationService()
         {
-            _windows["Tag1"] = new GameWindowView();
+            //_windows["Tag1"] = new GameWindowView();
             _windows["Tag2"] = new GameMiddleWindowView();
             _windows["Tag3"] = new GameHardWindowView();
             _windows["Drag&Drop1"] = new GameDragDropModeWindowView();

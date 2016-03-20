@@ -20,10 +20,10 @@ namespace PuzzleGame.Views
     /// </summary>
     public partial class GameWindowView : Window
     {
-        public GameWindowView()
+        public GameWindowView(int id)
         {
             InitializeComponent();
-            GameWindowViewModel vm = new GameWindowViewModel();
+            GameWindowViewModel vm = new GameWindowViewModel(id);
             this.DataContext = vm;
         }
     }
