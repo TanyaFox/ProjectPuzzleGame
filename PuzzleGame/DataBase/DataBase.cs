@@ -113,6 +113,7 @@ namespace PuzzleGame
 
         public int AddPartsOfPicture(int ImageId, byte[] imageBytes, int Difficulty, int PartLocation)
         {
+            int id = 0;
             using (SqlConnection connection = new SqlConnection(conString))
             {
 
@@ -124,7 +125,7 @@ namespace PuzzleGame
                 cmd.Parameters.AddWithValue("@Location", PartLocation);
                 connection.Open();
                 cmd.ExecuteNonQuery();
-                int id = 0;
+
                 using (SqlCommand cmd1 = new SqlCommand("SELECT IDENT_CURRENT ('dbo.Picture')", connection))//список миниатюр
                 {
                     using (SqlDataReader reader = cmd1.ExecuteReader())
@@ -134,7 +135,6 @@ namespace PuzzleGame
                             id=reader.GetInt32(0);
                         }
                     }
-
                     connection.Close();
                 }
             }
