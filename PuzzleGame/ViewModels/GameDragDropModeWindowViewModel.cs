@@ -43,5 +43,19 @@ namespace PuzzleGame.ViewModels
                 OnPropertyChanged("IsAllow");
             }
         }
+
+        private List<byte[]> _listOfParts;
+        public List<byte[]> ListOfParts
+        {
+            get
+            {
+                return _listOfParts;
+            }
+            set
+            {
+                _listOfParts = value;
+                OnPropertyChanged("ListOfParts");
+            }
+        }
     }
 }
