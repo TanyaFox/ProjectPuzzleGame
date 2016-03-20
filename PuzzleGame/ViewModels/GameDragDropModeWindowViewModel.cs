@@ -92,7 +92,16 @@ namespace PuzzleGame.ViewModels
 
         public GameDragDropModeWindowViewModel(int id, int level, IField field)
         {
-
+            try
+            {
+                Id = id;
+                Level = level;
+                _field = field;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ошибка!" + e.Message);
+            }
         }
     }
 }
