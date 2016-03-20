@@ -13,7 +13,7 @@ namespace PuzzleGame
 {
     class DataBase
     {
-        public string conString = "Data Source=localhost;Initial Catalog=Pazzle;Integrated Security=True";
+        public string conString = "Data Source=localhost;Initial Catalog=Puzzle;Integrated Security=True";
 
         public List<Miniature> LoadMiniatures()
         {
@@ -172,13 +172,13 @@ namespace PuzzleGame
                 using (SqlConnection connection = new SqlConnection(conString))
                 {
                     connection.Open();
-                    using (SqlCommand cmd = new SqlCommand("SELECT p.Name, l.[Level], l.Mode, l.Location FROM dbo.LastGame as l, dbo.Picture as p WHERE l.IdImage=p.Id", connection))
+                    using (SqlCommand cmd = new SqlCommand("SELECT l.IdImage, l.[Level], l.Mode, l.Location FROM dbo.LastGame as l", connection))
                     {
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                LastGame = new Game(reader.GetInt32(reader.GetOrdinal("ImageId")), reader.GetInt32(reader.GetOrdinal("Level")), reader.GetInt32(reader.GetOrdinal("Mode")), reader.GetString(reader.GetOrdinal("Location")));
+                                LastGame = new Game(reader.GetInt32(reader.GetOrdinal("IdImage")), reader.GetInt32(reader.GetOrdinal("Level")), reader.GetInt32(reader.GetOrdinal("Mode")), reader.GetString(reader.GetOrdinal("Location")));
                             }
                         }
                     }
