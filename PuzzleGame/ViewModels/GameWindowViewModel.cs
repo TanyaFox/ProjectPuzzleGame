@@ -23,9 +23,9 @@ namespace PuzzleGame.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
-        private Field1 _field;
+        private IField _field;
 
-        public Field1 Field
+        public IField Field
         {
             get { return _field; }
             set { _field = value; }
@@ -75,12 +75,8 @@ namespace PuzzleGame.ViewModels
         {
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
-            CustomNewGameWindowViewModel cng = new CustomNewGameWindowViewModel();
-            NewGameWindowViewModel ng = new NewGameWindowViewModel();
-            if (ng != null)
-                ng.ImageSelected += a => pz.GetNewGamePicture(a);
-            else
-                cng.ImageSelected += a => pz.GetNewGamePicture(a);
+
+            _field = pz.CreateNewGame(1, 1, db.LoadPuzzle(id, 1));
             if (_field != null)
             {
                 for (int i = 0; i < _field.ListCell.Count; i++)
