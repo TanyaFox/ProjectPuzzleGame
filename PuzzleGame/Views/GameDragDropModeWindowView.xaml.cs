@@ -34,5 +34,18 @@ namespace PuzzleGame.Views
             GameDragDropModeWindowViewModel vm = new GameDragDropModeWindowViewModel(id, level, field);
             this.DataContext = vm;
         }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Image im = e.Source as Image;
+            DataObject data = new DataObject(typeof(ImageSource), im.Source);
+            DragDrop.DoDragDrop(im, data, DragDropEffects.Copy);
+        }
+
+        private void Image_Drop(object sender, DragEventArgs e)
+        {
+            ImageSource image = e.Data.GetData(typeof(ImageSource)) as ImageSource;
+            ((Image)sender).Source = image;
+        }
     }
 }
