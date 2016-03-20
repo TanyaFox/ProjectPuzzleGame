@@ -63,7 +63,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Row="0" Grid.Column="1" Height="180" Width="Auto" Margin="10 10 5 10" Source="{Binding Part}" MouseDown="Image_MouseDown"/>
+                            <Image Grid.Row="0" Grid.Column="1" Height="180" Width="Auto" Margin="10 10 5 10" Source="{Binding Image}" MouseDown="Image_MouseDown"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

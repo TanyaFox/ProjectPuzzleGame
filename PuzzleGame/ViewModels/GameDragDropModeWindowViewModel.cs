@@ -62,8 +62,8 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private List<byte[]> _listOfParts;
-        public List<byte[]> ListOfParts
+        private List<Cell> _listOfParts;
+        public List<Cell> ListOfParts
         {
             get
             {
@@ -76,8 +76,8 @@ namespace PuzzleGame.ViewModels
             }
         }
 
-        private List<byte[]> _selectedPart;
-        public List<byte[]> SelectedPart
+        private Cell _selectedPart;
+        public Cell SelectedPart
         {
             get
             {

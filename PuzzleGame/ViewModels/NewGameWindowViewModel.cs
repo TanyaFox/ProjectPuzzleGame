@@ -22,7 +22,6 @@ namespace PuzzleGame.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
         }
 
-        private INavigationService _navigationService;
         private INavigationServiceGames _navigationServiceGame;
 
         private Dictionary<string, string> _gameMode;
