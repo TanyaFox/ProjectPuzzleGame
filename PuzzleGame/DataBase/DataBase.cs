@@ -28,7 +28,7 @@ namespace PuzzleGame
                         {
                             for (int i = 0; i < reader.FieldCount; i = i + 3)
                             {
-                                
+
                                 int bLength = (int)reader.GetBytes(2, i, null, 0, int.MaxValue);
                                 byte[] bBuffer = new byte[bLength];
                                 reader.GetBytes(2, i, bBuffer, 0, bLength);
@@ -92,8 +92,9 @@ namespace PuzzleGame
             }
         }
 
-        public void AddPicture(string ImageName, string ImageAdress)
+        public int AddPicture(string ImageName, string ImageAdress)
         {
+            int id = 0;
             FileStream fStream = new FileStream(ImageAdress, FileMode.Open, FileAccess.Read);
             Byte[] imageBytes = new byte[fStream.Length];
             fStream.Read(imageBytes, 0, imageBytes.Length);
@@ -107,16 +108,29 @@ namespace PuzzleGame
                 cmd.Parameters.AddWithValue("@Miniature", imageBytes);
                 connection.Open();
                 cmd.ExecuteNonQuery();
-                connection.Close();
+
+                using (SqlCommand cmd1 = new SqlCommand("SELECT IDENT_CURRENT ('dbo.Picture')", connection))//список миниатюр
+                {
+                    using (SqlDataReader reader = cmd1.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            id = reader.GetInt32(0);
+                        }
+                    }
+                    connection.Close();
+                }
             }
+            return id;
         }
 
-        public int AddPartsOfPicture(int ImageId, byte[] imageBytes, int Difficulty, int PartLocation)
+
+
+        public void AddPartsOfPicture(int ImageId, byte[] imageBytes, int Difficulty, int PartLocation)
         {
-            int id = 0;
+
             using (SqlConnection connection = new SqlConnection(conString))
             {
-
                 var cmd = new SqlCommand("ДобавлениеЧасти", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ImageId", ImageId);
@@ -125,20 +139,8 @@ namespace PuzzleGame
                 cmd.Parameters.AddWithValue("@Location", PartLocation);
                 connection.Open();
                 cmd.ExecuteNonQuery();
-
-                using (SqlCommand cmd1 = new SqlCommand("SELECT IDENT_CURRENT ('dbo.Picture')", connection))//список миниатюр
-                {
-                    using (SqlDataReader reader = cmd1.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            id=reader.GetInt32(0);
-                        }
-                    }
-                    connection.Close();
-                }
+                connection.Close();
             }
-            return id;
         }
 
         public Game LoadGame()
