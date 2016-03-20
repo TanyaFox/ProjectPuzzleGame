@@ -23,7 +23,7 @@ namespace PuzzleGame.Views
         public GameDragDropModeMiddleWindowView()
         {
             InitializeComponent();
-            GameDragDropModeMiddleWindowViewModel vm = new GameDragDropModeMiddleWindowViewModel();
+            GameDragDropModeWindowViewModel vm = new GameDragDropModeWindowViewModel();
             this.DataContext = vm;
         }
     }
