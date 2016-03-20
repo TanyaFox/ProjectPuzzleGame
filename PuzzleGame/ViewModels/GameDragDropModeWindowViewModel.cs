@@ -59,6 +59,7 @@ namespace PuzzleGame.ViewModels
             }
         }
 
+
         public GameDragDropModeWindowViewModel(int id, int level)
         {
 
