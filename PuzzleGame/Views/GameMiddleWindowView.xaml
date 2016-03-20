@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         
         <TextBlock Grid.ColumnSpan="5" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="26" FontFamily="Comic Sans MS Bold" Margin="20 10 20 10">Уровень: средне</TextBlock>
-        <TextBlock Grid.ColumnSpan="5" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS" Margin="20 10 20 10">Правила: собери паззл, меняя местами соседние кусочки по вертикали или горизонтали.</TextBlock>
+        <TextBlock Grid.ColumnSpan="5" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontFamily="Comic Sans MS" Margin="20 10 20 10">Правила: собери паззл, меняя кусочки местами.</TextBlock>
         <Button Grid.Row="0" Grid.ColumnSpan="5" HorizontalAlignment="Right" Height="60" Width="300"  FontSize="26" FontFamily="Comic Sans MS Bold" Margin="0 20 10 20" Background="Bisque" Command="{Binding ButtonSavedGameCommand}">Сохранить игру</Button>
 
         <Button Grid.Column="0" Grid.Row="2" Height="130" Width="180" Margin="20 0 0 0" IsEnabled="{Binding IsEnabled[0]}" Command="{Binding ButtonPressedCommand}" CommandParameter="0">
