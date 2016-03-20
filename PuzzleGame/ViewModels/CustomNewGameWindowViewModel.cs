@@ -139,23 +139,21 @@ namespace PuzzleGame.ViewModels
         {
             //These all should be in parallel task
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Pictures|*.jpeg;*.gif;*.png;*.jpeg";
+            dialog.Filter = "Pictures|*.jpg;*.gif;*.png;*.jpeg";
             dialog.InitialDirectory = Environment.CurrentDirectory;
             Stream st = null;
-            if (dialog.ShowDialog() == null)
+            if (dialog.ShowDialog() != null)
             {
                 try
                 {
-                    if ((st = dialog.OpenFile()) != null)
+
+                    using (st)
                     {
-                        using (st)
-                        {
-                            int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
-                            BitmapFrame bi = BitmapFrame.Create(st);
-                            if (ImageSelected != null)
-                                ImageSelected(NewPictureId);
-                            pz.InitiateFragmentation(NewPictureId, bi);
-                        }
+                        int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
+                        BitmapFrame bi = BitmapFrame.Create(st);
+                        if (ImageSelected != null)
+                            ImageSelected(NewPictureId);
+                        pz.InitiateFragmentation(NewPictureId, bi);
                     }
                 }
                 catch (Exception ex)
