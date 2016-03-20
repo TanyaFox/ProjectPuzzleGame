@@ -177,7 +177,7 @@ namespace PuzzleGame.ViewModels
                 x = await PopulateProperties(a);
                 MessageBox.Show("Поздравляем, вы победили!");
             }
-            catch
+            catch(Exception e)
             {
                 MessageBox.Show("Ошибка!" + e.Message);
             }
@@ -246,6 +246,7 @@ namespace PuzzleGame.ViewModels
             catch(Exception e)
             {
                 MessageBox.Show("Ошибка!" + e.Message);
+                return false;
             }
         }
 
