@@ -41,21 +41,6 @@ namespace PuzzleGame.ViewModels
 
         private INavigationService _navigationService;
 
-
-        private List<byte[]> _image;
-        public List<byte[]> Image
-        {
-            get
-            {
-                return _image;
-            }
-            set
-            {
-                _image = value;
-                OnPropertyChanged("Image");
-            }
-        }
-
         private List<bool> _isEnabled;
         public List<bool> IsEnabled
         {
