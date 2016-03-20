@@ -15,7 +15,7 @@ namespace PuzzleGame.Models
         public Field2(int cells, List<byte[]> imagePieces)
         {
             List<Cell> Templist = new List<Cell>();
-            for (int i = 1; i <= cells; i++)
+            for (int i = 0; i < cells; i++)
             {
                 Templist.Add(new Cell());
             }

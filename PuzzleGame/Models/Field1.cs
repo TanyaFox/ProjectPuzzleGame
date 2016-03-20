@@ -17,11 +17,11 @@ namespace PuzzleGame.Models
             this.ImagePieces = imagePieces;
             List<int> rndList = new List<int>();
             Random rn = new Random();
-            for (int i = 1; i <= cells; i++)
+            for (int i = 0; i < cells; i++)
             {
                 rndList.Add(i);
             }
-            for (int i = 1; i <= rndList.Count; i++)
+            for (int i = 0; i < rndList.Count; i++)
             {
                 int tmp = rndList[0];
                 rndList.RemoveAt(0);
@@ -29,7 +29,7 @@ namespace PuzzleGame.Models
             }
 
             List<Cell> Templist = new List<Cell>();
-            for (int i = 1; i <= rndList.Count; i++)
+            for (int i = 0; i < rndList.Count; i++)
             {
                 Templist.Add(new Cell(rndList[i], ImagePieces[rndList[i]]));
                 if (Templist[i].CurrentElement == i)
@@ -42,7 +42,7 @@ namespace PuzzleGame.Models
         {
             this.ImagePieces = imagePieces;
             List<Cell> Templist = new List<Cell>();
-            for (int i = 1; i <= LoadedState.Count; i++)
+            for (int i = 0; i < LoadedState.Count; i++)
             {
                 Templist.Add(new Cell(LoadedState[i], ImagePieces[LoadedState[i]]));
                 if (Templist[i].CurrentElement == i)
