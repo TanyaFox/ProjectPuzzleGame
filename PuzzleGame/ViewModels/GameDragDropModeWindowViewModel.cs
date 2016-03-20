@@ -95,8 +95,38 @@ namespace PuzzleGame.ViewModels
         {
             try
             {
+                
                 Id = id;
                 Level = level;
+                switch (Level)
+                {
+                    case 1:
+                        {
+                            cells = 9;
+                            break;
+                        }
+                    case 2:
+                        {
+                            cells = 20;
+                            break;
+                        }
+                    case 3:
+                        {
+                            cells = 36;
+                            break;
+                        }
+                    default:
+                        throw new ArgumentException();
+                }
+                _field = pz.CreateNewGame(Level, 2, db.LoadPuzzle(Id, cells));
+                if (_field != null)
+                {
+                    for (int i = 0; i < _field.ListCell.Count; i++)
+                    {
+                        _image.Add(_field.ListCell[i].Image);
+                        _isAllow.Add(_field.ListCell[i].IsNotCorrect);
+                    }
+                }
             }
             catch(Exception e)
             {
