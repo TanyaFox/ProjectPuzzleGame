@@ -77,7 +77,7 @@ namespace PuzzleGame.ViewModels
             _changingCell = -1;
             ButtonPressedCommand = new Command(arg => ButtonPressedClick(arg));
             ButtonSavedGameCommand = new Command(arg => ButtonSavedGameClick());
-            CallPopulateMethod(id);      
+            CallPopulateMethod(id, level);      
         }
 
         public ICommand ButtonPressedCommand { get; set; }
@@ -117,20 +117,42 @@ namespace PuzzleGame.ViewModels
 
         }
 
-        private async void CallPopulateMethod(int id)
+        private async void CallPopulateMethod(int id, int level)
         {
             bool x = false;
-            x = await PopulateProperties(id);
+            x = await PopulateProperties(id, level);
             MessageBox.Show("Поздравляем, вы победили!");
 
         }
 
-        private async Task<bool> PopulateProperties(int id)
+        private async Task<bool> PopulateProperties(int id, int level)
         {
+            int cells;
+            switch (level)
+            {
+                case 1:
+                    {
+                        cells = 9;
+                        break;
+                    }
+                case 2:
+                    {
+                        cells = 20;
+                        break;
+                    }
+                case 3:
+                    {
+                        cells = 36;
+                        break;
+                    }
+                default:
+                    throw new ArgumentException();
+            }
+
             _image = new List<byte[]>();
             _isEnabled = new List<bool>();
 
-            _field = pz.CreateNewGame(1, 1, db.LoadPuzzle(id, 9));
+            _field = pz.CreateNewGame(level, 1, db.LoadPuzzle(id, cells));
             if (_field != null)
             {
                 for (int i = 0; i < _field.ListCell.Count; i++)
