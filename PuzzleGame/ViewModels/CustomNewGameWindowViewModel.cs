@@ -137,7 +137,7 @@ namespace PuzzleGame.ViewModels
             _navigationServiceForGames.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), Id, Convert.ToInt32(_levelDifficulty[_difficulty])); //Here should be put the name from user's setting (from form)
         }
 
-        private void ButtonUploadPictureClick()
+        private async void ButtonUploadPictureClick()
         {
             Flag = true;
             ProgressLabel = "Загружаем картинку..";
@@ -148,14 +148,8 @@ namespace PuzzleGame.ViewModels
             {
                 try
                 {
-
-                    int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
-                    Bitmap bm = (Bitmap)Image.FromFile(dialog.FileName);
-                    BitmapImage bi = pz.BitmapToImageSource(bm);
-                    Id = NewPictureId;
-                    pz.InitiateFragmentation(NewPictureId, bi);
-                    Flag = false; //here should be Flag = wait метод от 5 строк выше
-            ProgressLabel = "Готово!";
+                    Flag = await AddingPicture(dialog); ;
+                    ProgressLabel = "Готово!";
                 }
                 catch (Exception ex)
                 {
@@ -164,6 +158,18 @@ namespace PuzzleGame.ViewModels
             }
             
         }
-
+        private async Task<bool> AddingPicture(OpenFileDialog dialog)
+        {
+            Task t1 = new Task(() =>
+            {
+                int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
+                Bitmap bm = (Bitmap)Image.FromFile(dialog.FileName);
+                BitmapImage bi = pz.BitmapToImageSource(bm);
+                Id = NewPictureId;
+                pz.InitiateFragmentation(NewPictureId, bi);
+            });
+            await t1;
+            return false;
+        }
     }
 }
