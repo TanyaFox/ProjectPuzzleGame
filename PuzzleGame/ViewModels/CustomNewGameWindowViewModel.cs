@@ -160,7 +160,11 @@ namespace PuzzleGame.ViewModels
             {
                 try
                 {
-                    Flag = await AddingPicture(dialog); ;
+                    int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
+                    Bitmap bm = (Bitmap)Image.FromFile(dialog.FileName);
+                    BitmapImage bi = pz.BitmapToImageSource(bm);
+                    Id = NewPictureId;
+                    pz.InitiateFragmentation(NewPictureId, bi);
                     ProgressLabel = "Готово!";
                 }
                 catch (Exception ex)
@@ -169,19 +173,6 @@ namespace PuzzleGame.ViewModels
                 }
             }
             
-        }
-        private async Task<bool> AddingPicture(OpenFileDialog dialog)
-        {
-            Task t1 = new Task(() =>
-            {
-                int NewPictureId = db.AddPicture(dialog.SafeFileName, dialog.FileName);
-                Bitmap bm = (Bitmap)Image.FromFile(dialog.FileName);
-                BitmapImage bi = pz.BitmapToImageSource(bm);
-                Id = NewPictureId;
-                pz.InitiateFragmentation(NewPictureId, bi);
-            });
-            await t1;
-            return false;
         }
     }
 }
