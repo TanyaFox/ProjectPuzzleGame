@@ -118,11 +118,18 @@ namespace PuzzleGame.ViewModels
 
         public CustomNewGameWindowViewModel()
         {
-            _gameMode = pz.DefineGameModes();
-            _levelDifficulty = pz.DefineDifficultyLevels();
+            try
+            {
+                _gameMode = pz.DefineGameModes();
+                _levelDifficulty = pz.DefineDifficultyLevels();
 
-            ButtonPlayCommand = new Command(arg => ButtonPlayClick());
-            ButtonUploadPictureCommand = new Command(arg => ButtonUploadPictureClick());
+                ButtonPlayCommand = new Command(arg => ButtonPlayClick());
+                ButtonUploadPictureCommand = new Command(arg => ButtonUploadPictureClick());
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Ошибка" + e.Message);
+            }
 
         }
 
@@ -131,10 +138,15 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonPlayClick()
         {
-
-            _navigationServiceForGames = new NavigationServiceForGames();
-
-            _navigationServiceForGames.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), Id, Convert.ToInt32(_levelDifficulty[_difficulty])); //Here should be put the name from user's setting (from form)
+            try
+            {
+                _navigationServiceForGames = new NavigationServiceForGames();
+                _navigationServiceForGames.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), Id, Convert.ToInt32(_levelDifficulty[_difficulty]));
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Ошибка" + e.Message);
+            }
         }
 
         private void ButtonUploadPictureClick()
