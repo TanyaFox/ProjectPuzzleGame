@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using PuzzleGame.Interface;
+using PuzzleGame.Models;
 
 namespace PuzzleGame.ViewModels
 {
@@ -15,6 +17,21 @@ namespace PuzzleGame.ViewModels
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+
+        int Id;
+        int Level;
+        int cells;
+
+        PuzzleMethods pz = new PuzzleMethods();
+        DataBase db = new DataBase();
+
+        private IField _field;
+
+        public IField Field
+        {
+            get { return _field; }
+            set { _field = value; }
         }
 
         private List<byte[]> _image;
@@ -62,7 +79,15 @@ namespace PuzzleGame.ViewModels
 
         public GameDragDropModeWindowViewModel(int id, int level)
         {
-
+            try
+            {
+                Id = id;
+                Level = level;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Ошибка!" + e.Message);
+            }
         }
 
         public GameDragDropModeWindowViewModel(int id, int level, IField field)
