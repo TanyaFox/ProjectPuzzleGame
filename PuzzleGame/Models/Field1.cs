@@ -48,6 +48,7 @@ namespace PuzzleGame.Models
                 if (Templist[i].CurrentElement == i)
                     Templist[i].IsNotCorrect = false;
             }
+            ListCell = Templist;
         }
 
 
