@@ -35,6 +35,8 @@ namespace PuzzleGame.Views
             this.DataContext = vm;
         }
 
+
+
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Image im = e.Source as Image;

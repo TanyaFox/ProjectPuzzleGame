@@ -131,15 +131,9 @@ namespace PuzzleGame.ViewModels
 
         private void ButtonPlayClick()
         {
-            try
-            {
                 _navigationServiceGame = new NavigationServiceForGames();
                 _navigationServiceGame.NavigateTo(pz.FormMode(_gameMode[_mode], _levelDifficulty[_difficulty]), _selectedImage.IdImage, Convert.ToInt32(_levelDifficulty[_difficulty]));
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show("Ошибка!" + e.Message);
-            }
+            
         }
     }
 }

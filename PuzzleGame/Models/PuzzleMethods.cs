@@ -90,7 +90,7 @@ namespace PuzzleGame.Models
         {
             Dictionary<string, string> gameMode = new Dictionary<string, string>();
             gameMode["Пятнашки"] = "Tag";
-            gameMode["Кусочки"] = "Drag&Drop";
+            //gameMode["Кусочки"] = "Drag&Drop";
 
             return gameMode;
         }

@@ -140,7 +140,7 @@ namespace PuzzleGame.ViewModels
             }
             catch(Exception e)
             {
-                MessageBox.Show("Ошибка!" + e.Message);
+                //MessageBox.Show("Ошибка!" + e.Message);
             }
 
         }
@@ -176,7 +176,7 @@ namespace PuzzleGame.ViewModels
             }
             catch(Exception e)
             {
-                MessageBox.Show("Ошибка!" + e.Message);
+                //MessageBox.Show("Ошибка!" + e.Message);
             }
 
         }
@@ -242,7 +242,7 @@ namespace PuzzleGame.ViewModels
             }
             catch(Exception e)
             {
-                MessageBox.Show("Ошибка!" + e.Message);
+                //MessageBox.Show("Ошибка!" + e.Message);
                 return false;
             }
         }
